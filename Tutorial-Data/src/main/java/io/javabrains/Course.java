@@ -1,7 +1,8 @@
-package io.javabrains.course;
+package io.javabrains;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import io.javabrains.Topic;
 
@@ -12,7 +13,7 @@ public class Course {
 	private String id;
 	private String name;
 	private String description;
-	
+	@ManyToOne
 	private Topic topic;
 	
 	public Course() {
