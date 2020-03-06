@@ -1,4 +1,4 @@
-package io.javabrains.AppTutorialData;
+package io.javabrains;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
