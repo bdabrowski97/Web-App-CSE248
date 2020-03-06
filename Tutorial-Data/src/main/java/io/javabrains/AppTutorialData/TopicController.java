@@ -1,4 +1,4 @@
-package io.javabrains.topic;
+package io.javabrains.AppTutorialData;
 
 import java.util.Arrays;
 import java.util.List;

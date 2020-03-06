@@ -1,7 +1,12 @@
-package io.javabrains.topic;
+package io.javabrains.AppTutorialData;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity // use this so the database picks up this object
 public class Topic {
 	
+	@Id // sort by Id
 	private String id;
 	private String name;
 	private String description;
@@ -18,7 +23,6 @@ public class Topic {
 	}
 	
 	
-	//getters/setters
 	public String getId() {
 		return id;
 	}
