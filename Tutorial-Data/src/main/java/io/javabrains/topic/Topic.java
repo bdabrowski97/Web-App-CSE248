@@ -1,4 +1,4 @@
-package springbootstarter.topic;
+package io.javabrains.topic;
 
 public class Topic {
 	

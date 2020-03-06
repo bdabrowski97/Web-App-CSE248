@@ -1,4 +1,4 @@
-package springbootstarter.topic;
+package io.javabrains.topic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
