@@ -35,12 +35,12 @@ public class CourseController {
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/topics/{topicId}/courses/{id}")
-	public void updateCourse(@RequestBody Course topic, @PathVariable String id, @PathVariable String topicId) {
+	public void updateCourse(@RequestBody Course course, @PathVariable String id, @PathVariable String topicId) {
 		course.setTopic(new Topic(topicId,"",""));
-		courseService.updateCourse(id, topic);
+		courseService.updateCourse(course);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/topics/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/topics/{topicId}/courses/{id}")
 	public void deleteTopic(@PathVariable String id) {
 		 courseService.deleteCourse(id);
 	}
