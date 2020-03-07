@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan("controller")
+@ComponentScan("model")
 @SpringBootApplication
 public class BootApplication {
 
