@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <html>
+<head>
+	
+	<script>
+	function myFunction(){
+		document.getElementById("demo").innerHTML = "Paragraph changed";
+	}
+	</script>
+	<script>
+		function goToHello(){
+			window.location="http://localhost:8080/hello"
+		}
+	</script>
+	
+</head>
+
+
+
 <body style="background-color: limegreen; font-family:verdana;">
 	
 	<h1 style="font-size:60px; text-align:center;">HELLO WORLD</h1>
@@ -12,7 +29,7 @@
 	 Also I'm writing this all with a text editor and its painful.
 	 </strong></p>
 	 
-	<button type="button" onclick='document.getElementById("demo").innerHTML= "Hello Fucker!"'>Click Bitch</button>
+	<button type="button" onclick="goToHello()">Button</button>
 	
 <!-- <img alt="ohno" src="meme.png"> -->	
 	 
