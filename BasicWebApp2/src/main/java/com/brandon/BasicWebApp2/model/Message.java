@@ -4,28 +4,28 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Alien {
+public class Message {
 	
 	@Id
 	private int aid;
-	private String aname;
+	private String message;
 	
 	public int getAid() {
 		return aid;
 	}
 	public void setAid(int aid) {
-		this.aid = aid;
+		this.aid = aid; 
 	}
 	public String getAname() {
-		return aname;
+		return message;
 	}
 	public void setAname(String aname) {
-		this.aname = aname;
+		this.message = aname;
 	}
 	
 	@Override
 	public String toString() {
-		return "Alien [aid=" + aid + ",aname=" + aname + "]";
+		return "Alien [aid=" + aid + ",aname=" + message + "]";
 	}
 	
 	

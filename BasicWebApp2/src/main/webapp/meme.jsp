@@ -19,7 +19,7 @@ function goToHome(){
 
 
 
-<img src="images/meme.png" alt="woops">
+<img src="images/meme.png" alt="woops" onclick="goToHome()">
 
 </body>
 </html>
