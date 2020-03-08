@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {background-color: limegreen; font-family: verdana;}
+		h1 {font-size: 10vw; text-align: center;}
+		p {text-align: center;}
+	</style>
 	<script>
 	function myFunction(){
 		document.getElementById("demo").innerHTML = "Paragraph changed";
@@ -15,19 +20,29 @@
 	
 </head>
 
+<body>
 
+	<button onclick="displayDate()">The time is?</button>
 
-<body style="background-color: limegreen; font-family:verdana;">
+	<script>
+		function displayDate() {
+ 		 document.getElementById("demo2").innerHTML = Date();
+		}
+	</script>
 	
-	<h1 style="font-size:60px; text-align:center;" onclick="goToMeme()">NOTTA FORUM</h1>
+	<header>
+		<h1 onclick="goToMeme()">NOTTA FORUM</h1>
 	
-	<p id="demo" style="text-align:center;"><strong>
-	 <strong>Leave messages or something idk</strong><br>
-	 </strong></p>
+		<p id="demo"><strong>
+		 <strong>Leave messages or something idk</strong><br>
+		 </strong></p>
+	</header>
+
 	 
+	 <p id="demo2"></p>
 	
 	
-<!-- <img alt="ohno" src="meme.png"> -->	
+	
 	 
 
 
