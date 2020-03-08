@@ -7,25 +7,25 @@ import javax.persistence.Id;
 public class Message {
 	
 	@Id
-	private String title;
+	private int id;
 	private String message;
 	
 	public Message() {
 		
 	}
 	
-	public Message(String title, String message) {
+	public Message(int id, String message) {
 		super();
-		this.title = title;
+		this.id = id;
 		this.message = message;
 	}
 
-	public String getTitle() {
-		return title;
+	public int getId() {
+		return id;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getMessage() {
@@ -35,6 +35,8 @@ public class Message {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	
 	
 	
 	
