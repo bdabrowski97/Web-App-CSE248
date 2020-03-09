@@ -25,7 +25,7 @@ public class HTMLController {
 	}
 	
 	@RequestMapping("/addMsg")
-	public String addAlien(Message msg) {
+	public String addMsg(Message msg) {
 		repo.save(msg);
 		return "home.jsp";
 	}

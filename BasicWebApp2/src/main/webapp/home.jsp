@@ -23,6 +23,11 @@ function goToMeme(){
 		window.location="http://localhost:8080/h2-console"
 	}
 </script>
+<script>
+function msgConfirmed(){
+	alert("Message Submitted");
+}
+</script>
 
 </head>
 <body>
@@ -31,7 +36,7 @@ function goToMeme(){
 	<p><strong>Leave a message or something idk</strong></p>
 
 	
-	<form action="addMsg">
+	<form action="addMsg" onsubmit="msgConfirmed()">
 		<input  type="text" name="aid"><br>
 		<input type="text" name="aname"><br>
 		<input type="submit"><br>
@@ -39,8 +44,7 @@ function goToMeme(){
 	<br>
 	
 	<button onclick="goToConsole()">Console</button>
-
-
+	
 
 
 </body>
