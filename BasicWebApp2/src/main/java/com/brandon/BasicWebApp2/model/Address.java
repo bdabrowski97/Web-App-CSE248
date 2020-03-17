@@ -1,5 +1,10 @@
 package com.brandon.BasicWebApp2.model;
 
+/**
+ * Where account holder lives
+ * @author bdabr
+ *
+ */
 public class Address {
 	
 	private String street;
@@ -8,6 +13,14 @@ public class Address {
 	private String zip;
 	private String country;
 	
+	/**
+	 * Address information
+	 * @param street Street
+	 * @param city City
+	 * @param state State
+	 * @param zip Zip Code
+	 * @param country Country
+	 */
 	public Address(String street, String city, String state, String zip, String country) {
 		this.street = street;
 		this.city = city;

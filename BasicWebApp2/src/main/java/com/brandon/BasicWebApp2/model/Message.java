@@ -2,7 +2,11 @@ package com.brandon.BasicWebApp2.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+/**
+ * Class used for testing during basic milesotne phase of project
+ * @author bdabr
+ *
+ */
 @Entity
 public class Message {
 	
