@@ -1,4 +1,5 @@
 package com.brandon.BasicWebApp2.model;
+
 /**
  * Stores account's actual name
  * @author bdabr

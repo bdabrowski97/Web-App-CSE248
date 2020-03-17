@@ -25,6 +25,7 @@ public class Item {
 		this.price = price;
 		this.photo = null;
 	}
+	
 	 /**
 	  * Item available for purchase on menu
 	  * @param name Name of item

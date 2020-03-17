@@ -7,6 +7,13 @@ package com.brandon.BasicWebApp2.model;
  */
 public class Admin extends Account {
 
+	/**
+	 * Admin information
+	 * @param username
+	 * @param password
+	 * @param name
+	 * @param address
+	 */
 	public Admin(String username, String password, Name name, Address address) {
 		super(username, password, name, address);
 	}
