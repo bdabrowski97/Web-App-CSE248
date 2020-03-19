@@ -6,30 +6,12 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Basic Web App Milestone</title>
-<style>
-	body {background-color: limegreen; font-family: verdana; }
-	h1 {font-size: 10vw; text-align: center;}
-	p {text-align: center;}
-	form {display: table}
-</style>
-
-<script>
-function goToMeme(){
-	window.location="http://localhost:8080/meme";
-}
-</script>
-<script>
-	function goToConsole(){
-		window.location="http://localhost:8080/h2-console"
-	}
-</script>
-<script>
-function msgConfirmed(){
-	alert("Message Submitted");
-}
-</script>
+<link rel="stylesheet" href="styles/homeStyle.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/homeScript.js"></script>
 
 </head>
+
+
 <body>
 
 	<h1 onclick="goToMeme()">NOTTA FORUM</h1>
