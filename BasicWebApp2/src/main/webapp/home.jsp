@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basic Web App Milestone</title>
-<link rel="stylesheet" href="styles/homeStyle.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/homeScript.js"></script>
+
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ghost Kitchen Web App Project</title>
+	<link rel="stylesheet" href="styles/homeStyle.css" />
+	<script src="js/homeScript.js"></script>
 
 </head>
 
@@ -26,6 +27,7 @@
 	<br>
 	
 	<button onclick="goToConsole()">Console</button>
+	<button onclick="testAlert()">Test</button>
 	
 
 
