@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page import="com.brandon.BasicWebApp2.model.*" %>
 <html>
 <head>
 
@@ -14,7 +15,7 @@
 
 
 <body>
-
+	Let's have some: <%= TestClass.testDisplay("CAKE TODAY") %>
 	<h1 onclick="goToMeme()">NOTTA FORUM</h1>
 	<p><strong>Leave a message or something idk</strong></p>
 
