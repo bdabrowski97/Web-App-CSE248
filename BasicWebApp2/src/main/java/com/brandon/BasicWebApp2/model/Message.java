@@ -29,7 +29,7 @@ public class Message {
 	
 	@Override
 	public String toString() {
-		return "Alien [aid=" + aid + ",aname=" + message + "]";
+		return "Message [aid=" + aid + ",aname=" + message + "]";
 	}
 	
 	
