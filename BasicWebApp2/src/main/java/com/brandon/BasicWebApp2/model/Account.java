@@ -35,6 +35,12 @@ public class Account {
 		this.address = address;
 	}
 	
+	public Account(String username, String password, Name name) {
+		this.username = username;
+		this.password = password;
+		
+	}
+	
 	// getters and setters
 
 	public String getUsername() {
