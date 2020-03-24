@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.brandon.BasicWebApp2.dao.AccountRepo;
 import com.brandon.BasicWebApp2.dao.MsgRepo;
 import com.brandon.BasicWebApp2.model.Message;
 import com.brandon.BasicWebApp2.model.*;
@@ -18,6 +19,8 @@ public class HTMLController {
 	@Autowired
 	private MsgRepo repo;
 	
+	@Autowired
+	private AccountRepo arepo;
 	
 	@RequestMapping("/")
 	public String home() {

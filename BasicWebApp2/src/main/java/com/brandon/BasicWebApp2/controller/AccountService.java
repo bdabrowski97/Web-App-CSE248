@@ -14,8 +14,8 @@ public class AccountService {
 	
 	public ArrayList<Account> getAllAccounts(){
 		ArrayList<Account> accounts = new ArrayList<>();
-		
-		
+		repo.findAll().forEach(accounts::add);
+		return accounts;
 	}
 
 }

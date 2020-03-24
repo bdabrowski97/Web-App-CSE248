@@ -2,6 +2,7 @@ package com.brandon.BasicWebApp2.model;
 
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 /**
@@ -15,7 +16,9 @@ public class Account {
 	@Id
 	private String username;
 	private String password;
+	@Embedded
 	private Name name;
+	@Embedded
 	private Address address;
 	
 	/**
