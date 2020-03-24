@@ -1,13 +1,18 @@
 package com.brandon.BasicWebApp2.model;
 
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 /**
  * This is the basic skeleton of the three account types for this program.
  * @author bdabr
  *
  */
+@Entity
 public class Account {
 	
+	@Id
 	private String username;
 	private String password;
 	private Name name;

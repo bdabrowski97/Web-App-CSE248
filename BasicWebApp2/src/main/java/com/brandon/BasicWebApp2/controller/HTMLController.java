@@ -30,6 +30,16 @@ public class HTMLController {
 		return "home.jsp";
 	}
 	
+	@RequestMapping("/register")
+	public String register() {
+		return "register.jsp";
+	}
+	
+	@RequestMapping("/registerUser")
+	public String registerUser() {
+		return "registerUser.jsp";
+	}
+	
 	@RequestMapping("/meme")
 	public String meme() {
 		return "meme.jsp";
