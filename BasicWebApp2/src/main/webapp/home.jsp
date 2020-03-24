@@ -15,11 +15,13 @@
 
 
 <body>
-	Let's have some: <%= TestClass.testDisplay("CAKE TODAY") %>
-	<h1 onclick="goToMeme()">NOTTA FORUM</h1>
-	<p><strong>Leave a message or something idk</strong></p>
+	<p><%= TestClass.capsMsg("stay at home club") %></p>
+	<h1 onclick="goToMeme()">FINAL PROJECT</h1>
+	<br>
+	<p><button>REGISTER</button> <button>LOGIN</button></p>
 
-	
+
+	<!--  
 	<form action="addMsg" onsubmit="msgConfirmed()">
 		<input  type="text" name="aid"><br>
 		<input type="text" name="aname"><br>
@@ -28,7 +30,21 @@
 	<br>
 	
 	<button onclick="goToConsole()">Console</button>
-	<button onclick="testAlert()">Test</button>
+	<button onclick="testAlert()">Test</button> -->
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<p>Project by Brandon Dabrowski</p>
 	
 
 
