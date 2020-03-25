@@ -14,6 +14,8 @@ public class Name {
 	private String first;
 	private String last;
 	
+	public Name() {	} // default
+	
 	/**
 	 * Real name
 	 * @param first first name

@@ -53,7 +53,6 @@ public class HTMLController {
 		String enteredPassword = request.getParameter("password");
 		model.addAttribute("username", enteredUsername);
 		
-		Account acc = new Account(enteredUsername, enteredPassword);
 		arepo.save(acc);
 		
 		return "test.jsp";

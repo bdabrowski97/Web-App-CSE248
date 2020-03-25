@@ -21,6 +21,8 @@ public class Account {
 	@Embedded
 	private Address address;
 	
+	public Account() {} //this default constructor is required for the program to work
+	
 	/**
 	 * Basic account info 
 	 * @param username Screen name
@@ -35,14 +37,7 @@ public class Account {
 		this.address = address;
 	}
 	
-	public Account(String username, String password) {
-		this.username = username;
-		this.password = password;
-		name = null;
-		address = null;
-		
-		
-	}
+	
 	
 	// getters and setters
 

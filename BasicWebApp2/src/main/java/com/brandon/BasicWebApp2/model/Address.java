@@ -13,6 +13,8 @@ public class Address {
 	private String zip;
 	private String country;
 	
+	public Address() {} // default
+	
 	/**
 	 * Address information
 	 * @param street Street
