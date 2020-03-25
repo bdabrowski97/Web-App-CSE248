@@ -3,8 +3,11 @@ package com.brandon.BasicWebApp2.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,9 +48,15 @@ public class HTMLController {
 	}
 	
 	@RequestMapping("/addUser")
-	public String addUser(@RequestBody Account account) {
-		arepo.save(account);
-		return "home.jsp";
+	public String addUser(HttpServletRequest request, Model model) {
+		String enteredUsername = request.getParameter("username"); // gets the value from the text box in the jsp
+		String enteredPassword = request.getParameter("password");
+		model.addAttribute("username", enteredUsername);
+		
+		Account acc = new Account(enteredUsername, enteredPassword);
+		arepo.save(acc);
+		
+		return "test.jsp";
 		
 	}
 	

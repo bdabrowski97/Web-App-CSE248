@@ -35,9 +35,12 @@ public class Account {
 		this.address = address;
 	}
 	
-	public Account(String username, String password, Name name) {
+	public Account(String username, String password) {
 		this.username = username;
 		this.password = password;
+		name = null;
+		address = null;
+		
 		
 	}
 	
