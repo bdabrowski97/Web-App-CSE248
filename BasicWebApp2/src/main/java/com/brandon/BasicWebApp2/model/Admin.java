@@ -7,6 +7,9 @@ package com.brandon.BasicWebApp2.model;
  */
 public class Admin extends Account {
 
+	
+	public Admin() {} // required to construct
+	
 	/**
 	 * Admin information
 	 * @param username

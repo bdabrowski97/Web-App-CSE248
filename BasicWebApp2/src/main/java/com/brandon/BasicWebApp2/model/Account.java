@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 /**
  * This is the basic skeleton of the three account types for this program.
  * @author bdabr
