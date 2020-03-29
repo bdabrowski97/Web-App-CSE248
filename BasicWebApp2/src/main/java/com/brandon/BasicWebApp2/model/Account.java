@@ -17,10 +17,25 @@ public class Account {
 	@Id
 	private String username;
 	private String password;
+	
 	@Embedded
 	private Name name;
 	@Embedded
 	private Address address;
+	
+	
+	// if not a store owner or admin, use these properties as well
+	private CreditCard card;
+	// private TreeSet<Order> history;  //Orders will be in their own data table. 
+										//They'll have both store references and user references to get all the data when needed for either the store or the user
+	
+	
+	// store owner stuff
+	private boolean isStoreOwner;
+	private Store store;
+	
+	// if is Admin, cannot own store or make purchases, nor enters a credit card
+	private boolean isAdmin;
 	
 	public Account() {} //this default constructor is required for the program to work
 	
@@ -37,10 +52,6 @@ public class Account {
 		this.name = name;
 		this.address = address;
 	}
-	
-	
-	
-	// getters and setters
 
 	public String getUsername() {
 		return username;
@@ -73,7 +84,39 @@ public class Account {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
+	public CreditCard getCard() {
+		return card;
+	}
+
+	public void setCard(CreditCard card) {
+		this.card = card;
+	}
+
+
+	public boolean isStoreOwner() {
+		return isStoreOwner;
+	}
+
+	public void setStoreOwner(boolean isStoreOwner) {
+		this.isStoreOwner = isStoreOwner;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 	
 	
 	
