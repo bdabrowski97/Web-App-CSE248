@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Order Recieved</title>
+<title>User Created</title>
 </head>
 <body>
 	User ${username} created

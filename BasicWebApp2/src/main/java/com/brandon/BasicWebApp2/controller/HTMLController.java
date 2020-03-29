@@ -64,9 +64,42 @@ public class HTMLController {
 		Name name = new Name(enteredFirst, enteredLast);
 		Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
 		Account acc = new Account(enteredUsername, enteredPassword, name, address);
+		acc.setAdmin(false);
+		acc.setStoreOwner(false);
+		
 		arepo.save(acc);
 		
-		return "test.jsp";
+		return "userMade.jsp";
+		
+	}
+	
+	@RequestMapping("/registerOwner")
+	public String registerOwner() {
+		return "registerOwner.jsp";
+	}
+	
+	@RequestMapping("/addStoreOwner")
+	public String addStoreOwner(HttpServletRequest request, Model model) {
+		String enteredUsername = request.getParameter("username"); // gets the value from the text box in the jsp
+		String enteredPassword = request.getParameter("password");
+		String enteredFirst = request.getParameter("firstname");
+		String enteredLast = request.getParameter("lastname");
+		String enteredStreet = request.getParameter("street");
+		String enteredCity = request.getParameter("city");
+		String enteredState = request.getParameter("state");
+		String enteredZip = request.getParameter("zipcode");
+		String enteredCountry = request.getParameter("country");
+		model.addAttribute("username", enteredUsername);
+		
+		Name name = new Name(enteredFirst, enteredLast);
+		Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
+		Account acc = new Account(enteredUsername, enteredPassword, name, address);
+		acc.setAdmin(false);
+		acc.setStoreOwner(true);
+		
+		arepo.save(acc);
+		
+		return "userMade.jsp";
 		
 	}
 	

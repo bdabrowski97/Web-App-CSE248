@@ -11,7 +11,7 @@
 
 <h1>SELECT ACCOUNT TYPE FOR REGISTRATION</h1>
 <br>
-<p><button onclick=window.location="http://localhost:8080/registerUser">USER</button> <button>STORE OWNER</button></p>
+<p><button onclick=window.location="http://localhost:8080/registerUser">USER</button> <button onclick=window.location="http://localhost:8080/registerOwner">STORE OWNER</button></p>
 
 
 </body>

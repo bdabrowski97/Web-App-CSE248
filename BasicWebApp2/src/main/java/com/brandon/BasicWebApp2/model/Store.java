@@ -9,7 +9,7 @@ import java.util.TreeSet;
  *
  */
 public class Store {
-	private List<Item> menu;
+//	private List<Item> menu;
 	private String owner;
 	private String tags;
 	private String name;
@@ -30,9 +30,9 @@ public class Store {
 	}
 
 	// Getters and Setters
-	public List<Item> getMenu() {
-		return menu;
-	}
+//	public List<Item> getMenu() {
+//		return menu;
+//	}
 
 	public boolean isOpen() {
 		return open;
@@ -42,9 +42,9 @@ public class Store {
 		this.open = open;
 	}
 
-	public void setMenu(List<Item> menu) {
-		this.menu = menu;
-	}
+//	public void setMenu(List<Item> menu) {
+//		this.menu = menu;
+//	}
 	
 	public String getOwner() {
 		return owner;
