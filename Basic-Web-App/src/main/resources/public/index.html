@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {background-color: limegreen; font-family: verdana;}
+		h1 {font-size: 10vw; text-align: center;}
+		p {text-align: center;}
+	</style>
+	<script>
+	function myFunction(){
+		document.getElementById("demo").innerHTML = "Paragraph changed";
+	}
+	</script>
+	<script>
+		function goToMeme(){
+			window.location="http://localhost:8080/meme"
+		}
+	</script>
+	
+</head>
+
+<body>
+
+	<button onclick="displayDate()">The time is?</button>
+
+	<script>
+		function displayDate() {
+ 		 document.getElementById("demo2").innerHTML = Date();
+		}
+	</script>
+	
+	<header>
+		<h1 onclick="goToMeme()">NOTTA FORUM</h1>
+	
+		<p id="demo"><strong>
+		 <strong>Leave messages or something idk</strong><br>
+		 </strong></p>
+	</header>
+
+	 
+	 <p id="demo2"></p>
+	
+	
+	
+	 
+
+
+</body>
+</html>
