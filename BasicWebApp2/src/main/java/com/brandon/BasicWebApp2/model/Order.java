@@ -23,8 +23,8 @@ public class Order implements Comparable<Order>, Serializable {
 	private Date orderDate;
 	private double total;
 	private double subTotal;
-	private Account owner;
-	private Store store;
+	private String owner;
+	private int storeID;
 	
 	
 	public Order( ){} // defualt
@@ -35,7 +35,7 @@ public class Order implements Comparable<Order>, Serializable {
 	 * @param subTotal Sale price before tax
 	 * @param owner The account that placed the order
 	 */
-	public Order( double total, double subTotal, Account owner) {
+	public Order( double total, double subTotal, String owner) {
 		itemsbought = new TreeSet<>();
 		this.orderDate = new Date();
 		this.total = total;
@@ -96,13 +96,23 @@ public class Order implements Comparable<Order>, Serializable {
 		this.subTotal = subTotal;
 	}
 
-	public Account getOwner() {
+	public int getStoreID() {
+		return storeID;
+	}
+
+	public void setStoreID(int storeID) {
+		this.storeID = storeID;
+	}
+
+	public String getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Account owner) {
+	public void setOwner(String owner) {
 		this.owner = owner;
 	}
+
+	
 
 	public int getOrderID() {
 		return orderID;
@@ -114,7 +124,7 @@ public class Order implements Comparable<Order>, Serializable {
 
 	@Override
 	public String toString() {
-		return orderID + " " + orderDate + " " + total + " " + subTotal + " " + owner.getUsername();
+		return orderID + " " + orderDate + " " + total + " " + subTotal + " " + owner;
 	}
 	
 	@Override

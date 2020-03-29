@@ -10,12 +10,11 @@ import java.util.TreeSet;
  */
 public class Store {
 	private List<Item> menu;
-	private TreeSet<Item> transactionHistory;
-	private Account owner;
-	private String[] tags;
+	private String owner;
+	private String tags;
 	private String name;
 	private boolean open;
-	private int id;
+	private int storeID;
 	
 	/**
 	 * Basic store information
@@ -23,12 +22,11 @@ public class Store {
 	 * @param name Name of the Store
 	 * @param id Id number used for store in case theres duplicate names
 	 */
-	public Store(Account owner, String name, int id) {
+	public Store(String owner, String name, int id) {
 		this.owner = owner;
 		this.name = name;
-		transactionHistory = new TreeSet<>();
 		open = false;
-		this.id = id;
+		this.storeID = id;
 	}
 
 	// Getters and Setters
@@ -47,28 +45,28 @@ public class Store {
 	public void setMenu(List<Item> menu) {
 		this.menu = menu;
 	}
-
-	public TreeSet<Item> getTransactionHistory() {
-		return transactionHistory;
-	}
-
-	public void setTransactionHistory(TreeSet<Item> transactionHistory) {
-		this.transactionHistory = transactionHistory;
-	}
-
-	public Account getOwner() {
+	
+	public String getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Account owner) {
+	public void setOwner(String owner) {
 		this.owner = owner;
 	}
 
-	public String[] getTags() {
+	public int getStoreID() {
+		return storeID;
+	}
+
+	public void setStoreID(int storeID) {
+		this.storeID = storeID;
+	}
+
+	public String getTags() {
 		return tags;
 	}
 
-	public void setTags(String[] tags) {
+	public void setTags(String tags) {
 		this.tags = tags;
 	}
 

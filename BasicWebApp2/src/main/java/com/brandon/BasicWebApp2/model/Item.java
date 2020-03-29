@@ -13,6 +13,8 @@ public class Item {
 	private double price;
 	private Image photo;
 	
+	public Item() {} // default
+	
 	/**
 	 * Version of item if no image is available
 	 * @param name Name of item
