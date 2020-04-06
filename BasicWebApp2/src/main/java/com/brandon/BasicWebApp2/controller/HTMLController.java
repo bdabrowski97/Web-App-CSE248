@@ -38,17 +38,17 @@ public class HTMLController {
 		return "home.jsp";
 	}
 	
-	@RequestMapping("/register")
+	@RequestMapping("/register") // choose which account type you want
 	public String register() {
 		return "register.jsp";
 	}
 	
-	@RequestMapping("/registerUser")
+	@RequestMapping("/registerUser") // user create form
 	public String registerUser() {
 		return "registerUser.jsp";
 	}
 	
-	@RequestMapping("/addUser")
+	@RequestMapping("/addUser") // function that creates the user
 	public String addUser(HttpServletRequest request, Model model) {
 		String enteredUsername = request.getParameter("username"); // gets the value from the text box in the jsp
 		String enteredPassword = request.getParameter("password");
@@ -61,24 +61,26 @@ public class HTMLController {
 		String enteredCountry = request.getParameter("country");
 		model.addAttribute("username", enteredUsername);
 		
-		Name name = new Name(enteredFirst, enteredLast);
-		Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
-		Account acc = new Account(enteredUsername, enteredPassword, name, address);
-		acc.setAdmin(false);
-		acc.setStoreOwner(false);
-		
-		arepo.save(acc);
-		
-		return "userMade.jsp";
+		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
+			return "registerAdmin.jsp";
+		} else {
+			Name name = new Name(enteredFirst, enteredLast);
+			Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
+			Account acc = new Account(enteredUsername, enteredPassword, name, address);
+			acc.setAdmin(false);
+			acc.setStoreOwner(false);	
+			arepo.save(acc);
+			return "userMade.jsp";
+		}
 		
 	}
 	
-	@RequestMapping("/registerOwner")
+	@RequestMapping("/registerOwner") // owner creation form
 	public String registerOwner() {
 		return "registerOwner.jsp";
 	}
 	
-	@RequestMapping("/addStoreOwner")
+	@RequestMapping("/addStoreOwner") // function that creates the owner
 	public String addStoreOwner(HttpServletRequest request, Model model) {
 		String enteredUsername = request.getParameter("username"); // gets the value from the text box in the jsp
 		String enteredPassword = request.getParameter("password");
@@ -91,19 +93,51 @@ public class HTMLController {
 		String enteredCountry = request.getParameter("country");
 		model.addAttribute("username", enteredUsername);
 		
-		Name name = new Name(enteredFirst, enteredLast);
-		Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
-		Account acc = new Account(enteredUsername, enteredPassword, name, address);
-		acc.setAdmin(false);
-		acc.setStoreOwner(true);
-		
-		arepo.save(acc);
-		
-		return "userMade.jsp";
-		
+		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
+			return "registerAdmin.jsp";
+		} else {
+			Name name = new Name(enteredFirst, enteredLast);
+			Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
+			Account acc = new Account(enteredUsername, enteredPassword, name, address);
+			acc.setAdmin(false);
+			acc.setStoreOwner(true);
+			arepo.save(acc);
+			return "userMade.jsp";
+		}
 	}
 	
-	@RequestMapping("/meme")
+	@RequestMapping("/registerAdmin") // admin creation form
+	public String registerAdmin() {
+		return "registerAdmin.jsp";
+	}
+	
+	@RequestMapping("/addAdmin") // function thats creates the admin
+	public String addAdmin(HttpServletRequest request, Model model) {
+		String enteredUsername = request.getParameter("username"); // gets the value from the text box in the jsp
+		String enteredPassword = request.getParameter("password");
+		String enteredFirst = request.getParameter("firstname");
+		String enteredLast = request.getParameter("lastname");
+		String enteredStreet = request.getParameter("street");
+		String enteredCity = request.getParameter("city");
+		String enteredState = request.getParameter("state");
+		String enteredZip = request.getParameter("zipcode");
+		String enteredCountry = request.getParameter("country");
+		model.addAttribute("username", enteredUsername);
+		
+		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
+			return "registerAdmin.jsp";
+		} else {
+			Name name = new Name(enteredFirst, enteredLast);
+			Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
+			Account acc = new Account(enteredUsername, enteredPassword, name, address);
+			acc.setAdmin(true);
+			acc.setStoreOwner(false);
+			arepo.save(acc);
+			return "userMade.jsp";
+		}
+	}
+	
+	@RequestMapping("/meme") // dumb joke
 	public String meme() {
 		return "meme.jsp";
 	}
