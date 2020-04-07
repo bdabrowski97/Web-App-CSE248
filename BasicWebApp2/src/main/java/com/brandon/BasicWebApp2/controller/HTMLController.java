@@ -2,6 +2,7 @@ package com.brandon.BasicWebApp2.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
 import com.brandon.BasicWebApp2.dao.MsgRepo;
-import com.brandon.BasicWebApp2.model.Message;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
 public class HTMLController {
 	
+
 	@Autowired
 	private MsgRepo repo;
 	
@@ -59,7 +60,7 @@ public class HTMLController {
 		String enteredState = request.getParameter("state");
 		String enteredZip = request.getParameter("zipcode");
 		String enteredCountry = request.getParameter("country");
-		model.addAttribute("username", enteredUsername);
+		model.addAttribute("username", enteredUsername); // sends this info to next page
 		
 		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
 			return "registerAdmin.jsp";
@@ -70,7 +71,7 @@ public class HTMLController {
 			acc.setAdmin(false);
 			acc.setStoreOwner(false);	
 			arepo.save(acc);
-			return "userMade.jsp";
+			return "madeUser.jsp";
 		}
 		
 	}
@@ -102,7 +103,7 @@ public class HTMLController {
 			acc.setAdmin(false);
 			acc.setStoreOwner(true);
 			arepo.save(acc);
-			return "userMade.jsp";
+			return "madeOwner.jsp";
 		}
 	}
 	
@@ -133,9 +134,38 @@ public class HTMLController {
 			acc.setAdmin(true);
 			acc.setStoreOwner(false);
 			arepo.save(acc);
-			return "userMade.jsp";
+			return "madeAdmin.jsp";
 		}
 	}
+	
+	
+	@RequestMapping("/login") // login page
+	public String loginPage() {
+		return "login.jsp";
+	}
+	
+	@RequestMapping("/loginAccount") // form for loggin in
+	public String loginAccount(HttpServletRequest request, Model model) {
+		String enteredUsername = request.getParameter("username");
+		String enteredPassword = request.getParameter("password");
+		
+		if (arepo.existsById(enteredUsername) == true) {
+			Optional<Account> acc = arepo.findById(enteredUsername);
+			Account login = acc.get();
+			System.out.println(login.getUsername().toString());
+			// we need to figure out how to extract the data from this entry in the database
+			
+		//	Account login = arepo.findById("username");
+		} else {
+			return "login.jsp";
+		}
+		
+		
+		return "madeUser.jsp";
+	}
+	
+	
+	
 	
 	@RequestMapping("/meme") // dumb joke
 	public String meme() {

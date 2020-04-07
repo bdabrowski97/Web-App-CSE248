@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>User Created</title>
+	<meta charset="ISO-8859-1">
+	<title>User Created</title>
+	<link rel="stylesheet" href="styles/homeStyle.css" />
 </head>
 <body>
-	User ${username} created
+	<h1>User ${username} created</h1>
 </body>
 </html>
