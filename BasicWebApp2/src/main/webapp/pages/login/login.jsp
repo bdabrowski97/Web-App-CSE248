@@ -6,6 +6,7 @@
 	<meta charset="ISO-8859-1">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="styles/homeStyle.css"/>
+	
 </head>
 <body>
 

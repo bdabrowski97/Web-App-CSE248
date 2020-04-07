@@ -141,27 +141,36 @@ public class HTMLController {
 	
 	@RequestMapping("/login") // login page
 	public String loginPage() {
-		return "login.jsp";
+		return "pages/login/login.jsp";
 	}
 	
-	@RequestMapping("/loginAccount") // form for loggin in
+	@RequestMapping("/loginAccount") // form for logging in
 	public String loginAccount(HttpServletRequest request, Model model) {
 		String enteredUsername = request.getParameter("username");
 		String enteredPassword = request.getParameter("password");
 		
+		if (enteredUsername.equals("") || enteredUsername.equals(null)) {
+			return "loginInvalid.jsp";
+		}
+		
 		if (arepo.existsById(enteredUsername) == true) {
 			Optional<Account> acc = arepo.findById(enteredUsername);
 			Account login = acc.get();
-			System.out.println(login.getUsername().toString());
-			// we need to figure out how to extract the data from this entry in the database
 			
-		//	Account login = arepo.findById("username");
+			if (login.getPassword().equals(enteredPassword)){
+				System.out.println("access granted");
+				
+				return "loginInvalid.jsp";
+			} else {
+				return "loginInvalid.jsp";
+			}
+			
 		} else {
-			return "login.jsp";
+			return "loginInvalid.jsp";
 		}
 		
 		
-		return "madeUser.jsp";
+		
 	}
 	
 	

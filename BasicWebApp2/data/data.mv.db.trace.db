@@ -1,54 +1,18 @@
-2020-03-28 21:53:35 jdbc[3]: exception
+2020-04-07 10:33:46 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
 create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-03-28 21:54:39 jdbc[3]: exception
+2020-04-07 10:40:28 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
 create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-03-28 22:12:06 jdbc[3]: exception
+2020-04-07 10:43:07 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
 create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-03-28 22:13:44 jdbc[3]: exception
+2020-04-07 10:53:50 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
 create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 11:43:08 jdbc[3]: exception
+2020-04-07 10:54:27 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
 create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 12:07:41 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 12:11:56 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 12:16:09 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 12:22:56 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 15:05:48 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 15:08:43 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 15:10:16 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 15:24:55 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 15:26:34 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-06 15:29:02 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-07 09:47:36 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-07 09:47:59 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
-create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
-2020-04-07 10:06:42 jdbc[3]: exception
+2020-04-07 10:55:14 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ORDERID INTEGER NOT NULL, ITEMSBOUGHT BINARY(255), ORDER_DATE TIMESTAMP, OWNER VARCHAR(255), STOREID INTEGER NOT NULL, SUB_TOTAL DOUBLE NOT NULL, TOTAL DOUBLE NOT NULL, PRIMARY KEY (ORDERID))"; expected "identifier"; SQL statement:
 create table order (orderid integer not null, itemsbought binary(255), order_date timestamp, owner varchar(255), storeid integer not null, sub_total double not null, total double not null, primary key (orderid)) [42001-200]
