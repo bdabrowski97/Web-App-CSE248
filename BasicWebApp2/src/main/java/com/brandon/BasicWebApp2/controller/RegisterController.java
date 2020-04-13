@@ -52,8 +52,26 @@ public class RegisterController {
 		String enteredCountry = request.getParameter("country");
 		model.addAttribute("username", enteredUsername); // sends this info to next page
 		
+		enteredUsername = enteredUsername.trim();
+		enteredPassword = enteredPassword.trim();
+		enteredFirst = enteredFirst.trim();
+		enteredLast = enteredLast.trim();
+		enteredStreet = enteredStreet.trim();
+		enteredCity = enteredCity.trim();
+		enteredState = enteredState.trim();
+		enteredZip = enteredZip.trim();
+		enteredCountry = enteredCountry.trim();
+		
 		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
-			return "registerAdmin.jsp";
+			return "pages/register/registerAdmin.jsp";
+		}
+		
+		if (StringCheck.checkNullOrEmpty(enteredUsername) == true || StringCheck.checkNullOrEmpty(enteredPassword) == true || 
+				StringCheck.checkNullOrEmpty(enteredFirst) == true || StringCheck.checkNullOrEmpty(enteredLast) == true ||
+				StringCheck.checkNullOrEmpty(enteredStreet) == true || StringCheck.checkNullOrEmpty(enteredCity) == true ||
+				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
+				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
+			return "pages/register/registerUserInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
 			Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
@@ -86,6 +104,14 @@ public class RegisterController {
 		
 		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
 			return "pages/register/registerAdmin.jsp";
+		}
+		
+		if (StringCheck.checkNullOrEmpty(enteredUsername) == true || StringCheck.checkNullOrEmpty(enteredPassword) == true || 
+				StringCheck.checkNullOrEmpty(enteredFirst) == true || StringCheck.checkNullOrEmpty(enteredLast) == true ||
+				StringCheck.checkNullOrEmpty(enteredStreet) == true || StringCheck.checkNullOrEmpty(enteredCity) == true ||
+				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
+				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
+			return "pages/register/registerOwnerInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
 			Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
@@ -117,6 +143,14 @@ public class RegisterController {
 		
 		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
 			return "pages/register/registerAdmin.jsp";
+		} 
+		
+		if (StringCheck.checkNullOrEmpty(enteredUsername) == true || StringCheck.checkNullOrEmpty(enteredPassword) == true || 
+				StringCheck.checkNullOrEmpty(enteredFirst) == true || StringCheck.checkNullOrEmpty(enteredLast) == true ||
+				StringCheck.checkNullOrEmpty(enteredStreet) == true || StringCheck.checkNullOrEmpty(enteredCity) == true ||
+				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
+				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
+			return "pages/register/registerAdminInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
 			Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
