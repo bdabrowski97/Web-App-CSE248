@@ -1,11 +1,9 @@
 package com.brandon.BasicWebApp2.model;
 
-import java.util.List;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+
 /**
  * This is the basic skeleton of the three account types for this program.
  * @author bdabr
@@ -34,10 +32,6 @@ public class Account {
 	
 	// if is Admin, cannot own store or make purchases, nor enters a credit card
 	private boolean isAdmin;
-	
-	
-	
-	
 	
 	
 	public Account() {} //this default constructor is required for the program to work

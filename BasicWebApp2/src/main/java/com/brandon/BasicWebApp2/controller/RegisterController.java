@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
-import com.brandon.BasicWebApp2.dao.MsgRepo;
+
+import com.brandon.BasicWebApp2.dao.OrderRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
@@ -22,7 +23,7 @@ public class RegisterController {
 	
 
 	@Autowired
-	private MsgRepo repo;
+	private OrderRepo orepo;
 	
 	@Autowired
 	private AccountRepo arepo;
@@ -62,7 +63,7 @@ public class RegisterController {
 		enteredZip = enteredZip.trim();
 		enteredCountry = enteredCountry.trim();
 		
-		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
+		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) { // code to create admin
 			return "pages/register/registerAdmin.jsp";
 		}
 		
@@ -71,6 +72,10 @@ public class RegisterController {
 				StringCheck.checkNullOrEmpty(enteredStreet) == true || StringCheck.checkNullOrEmpty(enteredCity) == true ||
 				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
 				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
+			return "pages/register/registerUserInvalid.jsp";
+		} 
+		
+		if (arepo.existsById(enteredUsername) == true) { // if user already exists
 			return "pages/register/registerUserInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
@@ -112,6 +117,10 @@ public class RegisterController {
 				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
 				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
 			return "pages/register/registerOwnerInvalid.jsp";
+		} 
+		
+		if (arepo.existsById(enteredUsername) == true) { // if user already exists
+			return "pages/register/registerUserInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
 			Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
@@ -151,6 +160,10 @@ public class RegisterController {
 				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
 				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
 			return "pages/register/registerAdminInvalid.jsp";
+		} 
+		
+		if (arepo.existsById(enteredUsername) == true) { // if user already exists
+			return "pages/register/registerUserInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
 			Address address = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);

@@ -11,7 +11,7 @@ public class Item {
 	private String name;
 	private String description;
 	private double price;
-	private Image photo;
+	
 	
 	public Item() {} // default
 	
@@ -25,21 +25,7 @@ public class Item {
 		this.name = name;
 		this.description = dec;
 		this.price = price;
-		this.photo = null;
-	}
-	
-	 /**
-	  * Item available for purchase on menu
-	  * @param name Name of item
-	  * @param dec Item description
-	  * @param price Item price
-	  * @param img Image of item
-	  */
-	public Item(String name, String dec, double price, Image img) {
-		this.name = name;
-		this.description = dec;
-		this.price = price;
-		this.photo = img;
+		
 	}
 	
 	// Getters and Setters
@@ -61,12 +47,6 @@ public class Item {
 	}
 	public void setPrice(double price) {
 		this.price = price;
-	}
-	public Image getPhoto() {
-		return photo;
-	}
-	public void setPhoto(Image photo) {
-		this.photo = photo;
 	}
 	
 	

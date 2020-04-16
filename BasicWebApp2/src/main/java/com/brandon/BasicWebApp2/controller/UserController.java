@@ -14,33 +14,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
-
 import com.brandon.BasicWebApp2.dao.OrderRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
-public class HTMLController {
+public class UserController {
 	
-
+	@Autowired
+	private OrderRepo orepo;
+	
 	@Autowired
 	private AccountRepo arepo;
 	
-	@Autowired 
-	private OrderRepo oreop;
-	
-	
-	@RequestMapping("/")
-	public String home() {
-		return "pages/home.jsp";
+	@RequestMapping("/userHomePage")
+	public String userHomePage() {
+		return "pages/user/homePage.jsp";
 	}
 	
-
-	@RequestMapping("/meme") // dumb joke
-	public String meme() {
-		return "pages/meme.jsp";
+	@RequestMapping("/usernext")
+	public String userNext() {
+		return "pages/user/usernext.jsp";
 	}
-	
-	
-	
 
 }

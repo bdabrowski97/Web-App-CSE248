@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
-import com.brandon.BasicWebApp2.dao.MsgRepo;
+
+import com.brandon.BasicWebApp2.dao.OrderRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
@@ -22,7 +23,7 @@ public class LoginController {
 	
 
 	@Autowired
-	private MsgRepo repo;
+	private OrderRepo orepo;
 	
 	@Autowired
 	private AccountRepo arepo;
@@ -36,6 +37,7 @@ public class LoginController {
 	public String loginAccount(HttpServletRequest request, Model model) {
 		String enteredUsername = request.getParameter("username");
 		String enteredPassword = request.getParameter("password");
+		model.addAttribute("username", enteredUsername);
 		
 		if (enteredUsername.equals("") || enteredUsername.equals(null)) {
 			return "pages/login/loginInvalid.jsp";
@@ -48,7 +50,7 @@ public class LoginController {
 			if (login.getPassword().equals(enteredPassword)){
 				System.out.println("access granted");
 				
-				return "pages/login/login.jsp";
+				return "pages/user/homePage.jsp";
 			} else {
 				return "pages/login/loginInvalid.jsp";
 			}
