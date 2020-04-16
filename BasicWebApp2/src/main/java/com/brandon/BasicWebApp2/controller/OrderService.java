@@ -5,19 +5,17 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
 import com.brandon.BasicWebApp2.dao.OrderRepo;
-import com.brandon.BasicWebApp2.model.Order;
+import com.brandon.BasicWebApp2.model.Purchase;
 
 @Service
 public class OrderService {
 	private OrderRepo repo;
 	
-	public ArrayList<Order> getAllOrders(){
-		ArrayList<Order> orders = new ArrayList<>();
+	public ArrayList<Purchase> getAllOrders(){
+		ArrayList<Purchase> orders = new ArrayList<>();
 		repo.findAll().forEach(orders::add);
 		return orders;
 	}
 	
-	public Order getOrder(int id) {
-		return repo.findById(id).get();
-	}
+	
 }

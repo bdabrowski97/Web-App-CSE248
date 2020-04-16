@@ -4,20 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Order {
+public class Purchase {
 	
 	@Id
-	private int orderID; // all items bought are tagged with this orderID
-	
+	private int purchaseID; // all items bought are tagged with this orderID
 	private int storeID; // store the order was placed at
 	private String userID; // all items belong to this username
 	private double subtotal;
 	private double total;
 	
-	public Order() {} // default
+	public Purchase() {} // default
 	
-	public Order(int orderID, int storeID, String userID, double subtotal, double total) {
-		this.orderID = orderID;
+	public Purchase(int orderID, int storeID, String userID, double subtotal, double total) {
+		this.purchaseID = orderID;
 		this.storeID = storeID;
 		this.userID = userID;
 		this.subtotal = subtotal;
@@ -25,11 +24,11 @@ public class Order {
 	}
 
 	public int getOrderID() {
-		return orderID;
+		return purchaseID;
 	}
 
 	public void setOrderID(int orderID) {
-		this.orderID = orderID;
+		this.purchaseID = orderID;
 	}
 
 	public int getStoreID() {
@@ -66,7 +65,7 @@ public class Order {
 	
 	@Override
 	public String toString() {
-		return "Order [orderID=" + orderID + " total="+total + " userID=" + userID + "]";
+		return "Order [orderID=" + purchaseID + " total="+total + " userID=" + userID + "]";
 	}
 	
 	
