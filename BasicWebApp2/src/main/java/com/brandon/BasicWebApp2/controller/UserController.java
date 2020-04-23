@@ -14,17 +14,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
-import com.brandon.BasicWebApp2.dao.OrderRepo;
+import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
+import com.brandon.BasicWebApp2.dao.PurchaseRepo;
+import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
 public class UserController {
 	
 	@Autowired
-	private OrderRepo orepo;
+	private PurchaseRepo oRepo;
 	
 	@Autowired
-	private AccountRepo arepo;
+	private AccountRepo aRepo;
+	
+	@Autowired
+	private StoreRepo sRepo;
+	
+	@Autowired
+	private ItemBoughtRepo ibRepo;
 	
 	@RequestMapping("/userHomePage")
 	public String userHomePage() {

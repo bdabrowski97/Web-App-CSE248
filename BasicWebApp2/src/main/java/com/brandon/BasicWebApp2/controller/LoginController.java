@@ -14,22 +14,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
-
-import com.brandon.BasicWebApp2.dao.OrderRepo;
+import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
+import com.brandon.BasicWebApp2.dao.PurchaseRepo;
+import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
 public class LoginController {
 	
 
-	@Autowired
-	private OrderRepo orepo;
+	private String loggedIn; // track whos logged in currently (NOTE: this is most likely incorrect af)
 	
 	@Autowired
-	private AccountRepo arepo;
+	private PurchaseRepo oRepo;
+	
+	@Autowired
+	private AccountRepo aRepo;
+	
+	@Autowired
+	private StoreRepo sRepo;
+	
+	@Autowired
+	private ItemBoughtRepo ibRepo;
 	
 	@RequestMapping("/login") // login page
 	public String loginPage() {
+		loggedIn = null; // keep track of logged in user
+		System.out.println(loggedIn);
+			
 		return "pages/login/login.jsp";
 	}
 	
@@ -43,14 +55,14 @@ public class LoginController {
 			return "pages/login/loginInvalid.jsp";
 		}
 		
-		if (arepo.existsById(enteredUsername) == true) {
-			Optional<Account> acc = arepo.findById(enteredUsername);
+		if (aRepo.existsById(enteredUsername) == true) {
+			Optional<Account> acc = aRepo.findById(enteredUsername);
 			Account login = acc.get();
 			
 			if (login.getPassword().equals(enteredPassword)){
-				System.out.println("access granted");
-				
+				loggedIn = enteredUsername; // keep track of logged in id
 				return "pages/user/homePage.jsp";
+				
 			} else {
 				return "pages/login/loginInvalid.jsp";
 			}

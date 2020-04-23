@@ -3,17 +3,22 @@ package com.brandon.BasicWebApp2.model;
 import java.util.List;
 import java.util.TreeSet;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * A store owner by a StoreOwner. Has products that can be bought by users.
  * @author bdabr
  *
  */
+@Entity
 public class Store {
 //	private List<Item> menu;
 	private String owner;
 	private String tags;
 	private String name;
 	private boolean open;
+	@Id
 	private int storeID;
 	
 	/**

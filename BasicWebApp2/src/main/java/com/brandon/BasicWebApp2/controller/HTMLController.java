@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
-
-import com.brandon.BasicWebApp2.dao.OrderRepo;
+import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
+import com.brandon.BasicWebApp2.dao.PurchaseRepo;
+import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
@@ -23,10 +24,17 @@ public class HTMLController {
 	
 
 	@Autowired
-	private AccountRepo arepo;
+	private AccountRepo aRepo;
 	
 	@Autowired 
-	private OrderRepo oreop;
+	private PurchaseRepo oRepo;
+	
+	@Autowired
+	private StoreRepo sRepo;
+	
+	@Autowired
+	private ItemBoughtRepo ibRepo;
+	
 	
 	
 	@RequestMapping("/")

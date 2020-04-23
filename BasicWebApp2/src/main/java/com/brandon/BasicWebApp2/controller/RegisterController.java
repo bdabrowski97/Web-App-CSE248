@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
-
-import com.brandon.BasicWebApp2.dao.OrderRepo;
+import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
+import com.brandon.BasicWebApp2.dao.PurchaseRepo;
+import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
@@ -23,11 +24,16 @@ public class RegisterController {
 	
 
 	@Autowired
-	private OrderRepo orepo;
+	private PurchaseRepo oRepo;
 	
 	@Autowired
-	private AccountRepo arepo;
+	private AccountRepo aRepo;
 	
+	@Autowired
+	private StoreRepo sRepo;
+	
+	@Autowired
+	private ItemBoughtRepo ibRepo;
 	
 	
 	@RequestMapping("/register") // choose which account type you want
@@ -75,7 +81,7 @@ public class RegisterController {
 			return "pages/register/registerUserInvalid.jsp";
 		} 
 		
-		if (arepo.existsById(enteredUsername) == true) { // if user already exists
+		if (aRepo.existsById(enteredUsername) == true) { // if user already exists
 			return "pages/register/registerUserInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
@@ -83,7 +89,7 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(false);
 			acc.setStoreOwner(false);	
-			arepo.save(acc);
+			aRepo.save(acc);
 			return "pages/register/madeUser.jsp";
 		}
 		
@@ -119,7 +125,7 @@ public class RegisterController {
 			return "pages/register/registerOwnerInvalid.jsp";
 		} 
 		
-		if (arepo.existsById(enteredUsername) == true) { // if user already exists
+		if (aRepo.existsById(enteredUsername) == true) { // if user already exists
 			return "pages/register/registerUserInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
@@ -127,7 +133,7 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(false);
 			acc.setStoreOwner(true);
-			arepo.save(acc);
+			aRepo.save(acc);
 			return "pages/register/madeOwner.jsp";
 		}
 	}
@@ -162,7 +168,7 @@ public class RegisterController {
 			return "pages/register/registerAdminInvalid.jsp";
 		} 
 		
-		if (arepo.existsById(enteredUsername) == true) { // if user already exists
+		if (aRepo.existsById(enteredUsername) == true) { // if user already exists
 			return "pages/register/registerUserInvalid.jsp";
 		} else {
 			Name name = new Name(enteredFirst, enteredLast);
@@ -170,7 +176,7 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(true);
 			acc.setStoreOwner(false);
-			arepo.save(acc);
+			aRepo.save(acc);
 			return "pages/register/madeAdmin.jsp";
 		}
 	}
