@@ -34,6 +34,7 @@ public class UserController {
 	@Autowired
 	private ItemBoughtRepo ibRepo;
 	
+	
 	@RequestMapping("/userHomePage")
 	public String userHomePage() {
 		return "pages/user/homePage.jsp";

@@ -23,7 +23,7 @@ import com.brandon.BasicWebApp2.model.*;
 public class LoginController {
 	
 
-	private String loggedIn; // track whos logged in currently (NOTE: this is most likely incorrect af)
+	private String loggedIn; // track whos logged in currently (NOTE: this is most likely incorrect )
 	
 	@Autowired
 	private PurchaseRepo oRepo;
@@ -36,6 +36,7 @@ public class LoginController {
 	
 	@Autowired
 	private ItemBoughtRepo ibRepo;
+	
 	
 	@RequestMapping("/login") // login page
 	public String loginPage() {

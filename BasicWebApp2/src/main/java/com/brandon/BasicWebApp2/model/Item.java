@@ -2,15 +2,23 @@ package com.brandon.BasicWebApp2.model;
 
 import java.awt.Image;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Menu item in a store
  * @author bdabr
  *
  */
+@Entity
 public class Item {
+	@Id
+	private int itemID;
+	
 	private String name;
 	private String description;
 	private double price;
+	private int storeID;
 	
 	
 	public Item() {} // default
