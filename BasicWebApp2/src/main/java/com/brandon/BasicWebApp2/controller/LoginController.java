@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,8 +49,11 @@ public class LoginController {
 	
 	@RequestMapping("/loginAccount") // form for logging in
 	public String loginAccount(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		
 		String enteredUsername = request.getParameter("username");
 		String enteredPassword = request.getParameter("password");
+		
 		model.addAttribute("username", enteredUsername);
 		
 		if (enteredUsername.equals("") || enteredUsername.equals(null)) {
@@ -62,6 +66,7 @@ public class LoginController {
 			
 			if (login.getPassword().equals(enteredPassword)){
 				loggedIn = enteredUsername; // keep track of logged in id
+				session.setAttribute("storedUsername", enteredUsername);
 				
 				return "pages/user/homePage.jsp";
 				

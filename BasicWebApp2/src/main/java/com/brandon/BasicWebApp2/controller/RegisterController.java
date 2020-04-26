@@ -1,10 +1,13 @@
 package com.brandon.BasicWebApp2.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +40,10 @@ public class RegisterController {
 	
 	
 	@RequestMapping("/register") // choose which account type you want
-	public String register() {
+	public String register(HttpServletRequest request) {
+	/*	HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("storedUsername").toString());
+		*/
 		return "pages/register/register.jsp";
 	}
 	
@@ -154,7 +160,7 @@ public class RegisterController {
 		String enteredState = request.getParameter("state");
 		String enteredZip = request.getParameter("zipcode");
 		String enteredCountry = request.getParameter("country");
-		model.addAttribute("username", enteredUsername);
+		model.addAttribute("username", enteredUsername); // used to display username on page after registration is complete
 		
 		if (enteredUsername.equals("ADMIN_CREATION") && enteredPassword.equals("ADMIN_CREATION")) {
 			return "pages/register/registerAdmin.jsp";

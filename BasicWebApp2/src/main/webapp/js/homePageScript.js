@@ -20,7 +20,8 @@ function testAlert(){
 }
 
 function storeName(){
-	localStorage.setItem('storedName', document.getElementById('username').innerHTML ); 
+	
+	sessionStorage.setItem('storedName', document.getElementById('username').innerHTML ); 
 	/*
 	 * THIS WORKS FOR TAKING THE TEXT FROM A SPACE ON THE WEBPAGE
 	 */
@@ -34,6 +35,6 @@ function pasteName(){
 }
 
 function test(){
-	alert(localStorage.getItem("storedName"));
+	alert(sessionStorage.getItem("storedName"));
 	
 }

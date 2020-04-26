@@ -8,7 +8,12 @@
 <script src="js/homePageScript.js"></script>
 </head>
 <body>
+	<%
+		String useThis = (String) session.getAttribute("storedUsername");
 	
+	%>
+	
+	<h1>Hello <%out.println(useThis); %></h1>
 	<button onclick="test()">test</button>
 	
 	<button onclick="pasteName()">click</button>
