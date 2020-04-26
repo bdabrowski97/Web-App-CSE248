@@ -62,6 +62,7 @@ public class LoginController {
 			
 			if (login.getPassword().equals(enteredPassword)){
 				loggedIn = enteredUsername; // keep track of logged in id
+				
 				return "pages/user/homePage.jsp";
 				
 			} else {

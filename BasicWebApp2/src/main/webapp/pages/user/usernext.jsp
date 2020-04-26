@@ -5,10 +5,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<script src="js/homePageScript.js"></script>
 </head>
 <body>
-	<%String username = request.getParameter("username"); %>
-
+	
+	<button onclick="test()">test</button>
+	
+	<button onclick="pasteName()">click</button>
 	<button  onclick=window.location="http://localhost:8080/userHomePage"> go back</button>
 </body>
 </html>
