@@ -15,7 +15,6 @@
 	
 	<h1>Hello <%out.println(username); %></h1>
 	<button onclick=window.location="http://localhost:8080/userInfoSettings">Change User Info</button>
-	<button onclick="test()">click</button>
 	<button  onclick=window.location="http://localhost:8080/userHomePage"> go back</button>
 </body>
 </html>

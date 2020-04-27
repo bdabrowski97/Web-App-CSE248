@@ -14,7 +14,7 @@
 	
 	<form action="loginAccount">
 		<input type="text" name="username"><br>
-		<input type="text" name="password"><br>
+		<input type="password" name="password"><br>
 		<input type="submit"><br>
 	</form>
 	

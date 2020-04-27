@@ -9,7 +9,9 @@
 	<link rel="stylesheet" href="styles/homeStyle.css" />
 </head>
 <body>
-
+	
+		<p style="color:red;">Error: Invalid Entry</p>
+	
 		<form action="changeUserInfo">
 			<input type="text" name="password" placeholder="PASSWORD"><br>
 			<input type="text" name="firstName" placeholder="FIRST NAME"><br>
