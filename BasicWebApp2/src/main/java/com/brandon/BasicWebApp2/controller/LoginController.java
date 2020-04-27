@@ -23,9 +23,6 @@ import com.brandon.BasicWebApp2.model.*;
 @Controller
 public class LoginController {
 	
-
-	private String loggedIn; // track whos logged in currently (NOTE: this is most likely incorrect )
-	
 	@Autowired
 	private PurchaseRepo oRepo;
 	
@@ -40,10 +37,7 @@ public class LoginController {
 	
 	
 	@RequestMapping("/login") // login page
-	public String loginPage() {
-		loggedIn = null; // keep track of logged in user
-		System.out.println(loggedIn);
-			
+	public String loginPage() {	
 		return "pages/login/login.jsp";
 	}
 	
@@ -65,9 +59,7 @@ public class LoginController {
 			Account login = acc.get();
 			
 			if (login.getPassword().equals(enteredPassword)){
-				loggedIn = enteredUsername; // keep track of logged in id
-				session.setAttribute("storedUsername", enteredUsername);
-				
+				session.setAttribute("storedUsername", enteredUsername); // saves the username to the server that we'll use for all the other pages when needed
 				return "pages/user/homePage.jsp";
 				
 			} else {

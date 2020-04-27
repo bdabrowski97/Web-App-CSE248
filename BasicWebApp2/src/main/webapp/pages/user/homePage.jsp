@@ -10,9 +10,14 @@
 	
 </head>
 <body>
+<%
+	// use % symbols to use java codes 
+	String username = (String) session.getAttribute("storedUsername");
+
+%>
 	
-	<h1>Welcome </h1> <h1 id='username'>${username}</h1> 
-	<button onclick="storeName()" >store</button>
+	<h1>Welcome <% out.println(username); %></h1>
+	<button onclick=window.location="http://localhost:8080/accountSettings">Account Settings</button>
 	<button onclick=window.location="http://localhost:8080/usernext">nextpage</button>
 
 </body>

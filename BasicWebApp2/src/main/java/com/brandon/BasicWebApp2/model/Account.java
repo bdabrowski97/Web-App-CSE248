@@ -117,6 +117,10 @@ public class Account {
 		this.isAdmin = isAdmin;
 	}
 	
+	@Override
+	public String toString() {
+		return username + " " + "isStoreOwner:" + isStoreOwner;
+	}
 	
 	
 }

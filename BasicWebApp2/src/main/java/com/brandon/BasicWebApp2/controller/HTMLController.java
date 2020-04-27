@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,9 @@ public class HTMLController {
 	
 	
 	@RequestMapping("/")
-	public String home() {
+	public String home(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
 		return "pages/home.jsp";
 	}
 	
@@ -46,6 +49,19 @@ public class HTMLController {
 	@RequestMapping("/meme") // dumb joke
 	public String meme() {
 		return "pages/meme.jsp";
+	}
+	
+	@RequestMapping("/accountSettings") // login page
+	public String accountSettingsPage(HttpServletRequest request) {	
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		System.out.println(acc.toString());
+		
+		return "pages/user/accountSettings.jsp";
 	}
 	
 	

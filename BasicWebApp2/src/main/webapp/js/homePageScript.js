@@ -35,6 +35,8 @@ function pasteName(){
 }
 
 function test(){
-	alert(sessionStorage.getItem("storedName"));
+var username =	'<% (String) session.getAttribute("storedUsername") %>';
+var u2 = username.toString();
+	alert(u2);
 	
 }
