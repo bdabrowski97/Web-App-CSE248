@@ -45,23 +45,22 @@ public class UserController {
 		return "pages/user/homePage.jsp";
 	}
 	
-	@RequestMapping("/usernext")
-	public String userNext() {
-		return "pages/user/usernext.jsp";
-	}
-	
 	@RequestMapping("/userInfoSettings")
-	public String userInfoSettings() {
+	public String userInfoSettings(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
 		return "pages/user/userInfoSettings.jsp";
 	}
 	
 	@RequestMapping("/changeUserInfo")
 	public String changeUserInfo(HttpServletRequest request) {
-		if (request.getSession() == null) { // checking for valid login
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
 			return "pages/home.jsp";
 		}
 		
-		HttpSession session = request.getSession();
 		
 		String enteredPassword = request.getParameter("password");
 		String enteredFirst = request.getParameter("firstName");
