@@ -23,7 +23,7 @@ public class Account {
 	
 	// if not a store owner or admin, use these properties as well
 	@Embedded
-	private CreditCard card;
+	private PaymentInfo paymentInfo;
 	// private TreeSet<Order> history;  //Orders will be in their own data table. 
 										//They'll have both store references and user references to get all the data when needed for either the store or the user
 	// store owner stuff
@@ -83,12 +83,12 @@ public class Account {
 		this.address = address;
 	}
 
-	public CreditCard getCard() {
-		return card;
+	public PaymentInfo getPaymentInfo() {
+		return paymentInfo;
 	}
 
-	public void setCard(CreditCard card) {
-		this.card = card;
+	public void setPaymentInfo(PaymentInfo paymentInfo) {
+		this.paymentInfo = paymentInfo;
 	}
 
 

@@ -95,8 +95,8 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(false);
 			acc.setStoreOwner(false);	
-			CreditCard cc = new CreditCard();
-			acc.setCard(cc);
+			PaymentInfo pi = new PaymentInfo("test","test","test");
+			acc.setPaymentInfo(pi);
 			aRepo.save(acc);
 			return "pages/register/madeUser.jsp";
 		}

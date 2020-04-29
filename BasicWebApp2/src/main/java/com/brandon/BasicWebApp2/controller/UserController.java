@@ -123,6 +123,7 @@ public class UserController {
 		
 		model.addAttribute("modelName",acc.getName().toString());
 		model.addAttribute("modelAddress", acc.getAddress().toString());
+		model.addAttribute("modelPaymentInfo",acc.getPaymentInfo().toString());
 		
 		
 		return "pages/user/viewMyAccountInfo.jsp";
