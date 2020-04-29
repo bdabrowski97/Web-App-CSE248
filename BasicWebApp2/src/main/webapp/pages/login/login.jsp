@@ -13,8 +13,8 @@
 	<h1>LOGIN</h1>
 	
 	<form action="loginAccount">
-		<input type="text" name="username"><br>
-		<input type="password" name="password"><br>
+		<input type="text" name="username" placeholder="USERNAME"><br>
+		<input type="password" name="password" placeholder="PASSWORD"><br>
 		<input type="submit"><br>
 	</form>
 	

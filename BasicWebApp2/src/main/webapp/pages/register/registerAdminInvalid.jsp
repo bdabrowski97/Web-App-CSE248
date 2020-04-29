@@ -12,11 +12,12 @@
 
 	<p style="color:red">Invalid Entry</p>
 	<form action="addAdmin">
-		User Name: <input type="text" name="username"> First Name: <input type="text" name="firstname"><br>
-		Password: <input type="text" name="password"> Last Name: <input type="text" name="lastname"><br>
+		<input type="text" name="username" placeholder="USERNAME"> <input type="text" name="firstname" placeholder="FIRST NAME"><br>
+		<input type="text" name="password" placeholder="PASSWORD"> <input type="text" name="lastname" placeholder="LAST NAME"><br>
 		<hr>
-		Street: <input type="text" name="street"> City: <input type="text" name="city"><br>
-		State: <input type="text" name="state"> Zip Code: <input type="text" name="zipcode"> Country: <input type="text" name="country"><br>
+		<input type="text" name="street" placeholder="STREET"> <input type="text" name="city" placeholder="CITY"><br>
+		<input type="text" name="state" placeholder="STATE"> <input type="text" name="zipcode" placeholder="ZIP CODE">
+		<input type="text" name="country" placeholder="COUNTRY"><br>
 		<input type="submit"><br>
 
 
