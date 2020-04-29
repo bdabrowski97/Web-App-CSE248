@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="styles/homeStyle.css" />
 </head>
 <body>
-	<h1>User ${username} created</h1>
+	<h1>Account ${username} created</h1>
+	<button onclick=window.location="http://localhost:8080/">Finish</button>
 </body>
 </html>

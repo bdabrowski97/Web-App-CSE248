@@ -43,8 +43,22 @@ public class PaymentInfo {
 	
 	@Override
 	public String toString() {
-		return mainNum + " " + securityCode + " " + experationDate;
-		
+		StringBuilder sb = new StringBuilder();
+		if (mainNum.length() > 4) {
+			for (int i = 0; i < 4; i++) {
+				sb.append(mainNum.charAt(i));
+			}
+			sb.append("************");
+			String num = sb.toString();
+			return num + " *** expires: " +  experationDate;
+		} else {
+			if (mainNum.equals("no")) {
+				return mainNum + " " + securityCode + " " + experationDate;
+			} else {
+				return mainNum + " *** expires: " + experationDate;
+			}
+			
+		}
 	}
 	
 

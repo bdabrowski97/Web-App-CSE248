@@ -95,10 +95,10 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(false);
 			acc.setStoreOwner(false);	
-			PaymentInfo pi = new PaymentInfo("test","test","test");
+			PaymentInfo pi = new PaymentInfo("no","payment","method");
 			acc.setPaymentInfo(pi);
 			aRepo.save(acc);
-			return "pages/register/madeUser.jsp";
+			return "pages/register/madeAccount.jsp";
 		}
 		
 	}
@@ -143,7 +143,7 @@ public class RegisterController {
 			acc.setStoreOwner(true);
 			
 			aRepo.save(acc);
-			return "pages/register/madeOwner.jsp";
+			return "pages/register/madeAccount.jsp";
 		}
 	}
 	
@@ -187,7 +187,7 @@ public class RegisterController {
 			acc.setStoreOwner(false);
 			
 			aRepo.save(acc);
-			return "pages/register/madeAdmin.jsp";
+			return "pages/register/madeAccount.jsp";
 		}
 	}
 	

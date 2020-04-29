@@ -129,5 +129,58 @@ public class UserController {
 		return "pages/user/viewMyAccountInfo.jsp";
 		
 	}
+	
+	@RequestMapping("/changePaymentInfo")
+	public String changePaymentInfo(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		return "pages/user/changePaymentInfo.jsp";
+	}
+	
+	@RequestMapping("changePaymentInfo2")
+	public String changePaymentInfo2(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String userame = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(userame).get();
+		
+		String num = (String) request.getParameter("num");
+		String cvc = (String) request.getParameter("cvc");
+		String expdate = (String) request.getParameter("expdate");
+		
+		num = num.trim();
+		cvc = cvc.trim();
+		expdate = expdate.trim();
+		if (num.equals("0") && cvc.equals("0") && expdate.equals("0")) {
+			acc.getPaymentInfo().setMainNum("no");
+			acc.getPaymentInfo().setSecurityCode("payment");
+			acc.getPaymentInfo().setExperationDate("info");
+			aRepo.save(acc);
+			return "pages/user/accountSettings.jsp";
+		}
+		
+		if (num.length() != 16 || cvc.length() != 3 || expdate.length() != 4) {
+			return "pages/user/changePaymentInfoInvalid.jsp";
+		} else {
+			acc.getPaymentInfo().setMainNum(num);
+			acc.getPaymentInfo().setSecurityCode(cvc);
+			acc.getPaymentInfo().setExperationDate(expdate);
+			aRepo.save(acc);
+		}
+		
+		return "pages/user/accountSettings.jsp";
+	}
 
+	
+	
+	
+	
+	
+	
+	
 }
