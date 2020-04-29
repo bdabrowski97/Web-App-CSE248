@@ -95,6 +95,8 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(false);
 			acc.setStoreOwner(false);	
+			CreditCard cc = new CreditCard();
+			acc.setCard(cc);
 			aRepo.save(acc);
 			return "pages/register/madeUser.jsp";
 		}
@@ -139,6 +141,7 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(false);
 			acc.setStoreOwner(true);
+			
 			aRepo.save(acc);
 			return "pages/register/madeOwner.jsp";
 		}
@@ -182,6 +185,7 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(true);
 			acc.setStoreOwner(false);
+			
 			aRepo.save(acc);
 			return "pages/register/madeAdmin.jsp";
 		}

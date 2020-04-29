@@ -51,7 +51,16 @@ public class UserController {
 		if (session.getAttribute("storedUsername") == null) { // checking for valid login
 			return "pages/home.jsp";
 		}
-		return "pages/user/userInfoSettings.jsp";
+		
+		String username = (String) session.getAttribute("storedUsername"); // grabs user info
+		Account acc = aRepo.findById(username).get();
+		if (acc.isStoreOwner() == true) {
+			// return storeowner page
+			return "pages/user/storeOwnerInfoSettings.jsp";
+		} else {
+			return "pages/user/userInfoSettings.jsp";
+		}
+		
 	}
 	
 	@RequestMapping("/changeUserInfo")
@@ -60,6 +69,9 @@ public class UserController {
 		if (session.getAttribute("storedUsername") == null) { // checking for valid login
 			return "pages/home.jsp";
 		}
+		
+		String username = (String) session.getAttribute("storedUsername"); // grabs user info
+		Account acc = aRepo.findById(username).get();
 		
 		
 		String enteredPassword = request.getParameter("password");
@@ -88,8 +100,7 @@ public class UserController {
 			return "pages/user/userInfoSettingsInvalid.jsp";
 		}  // check all for validity
 		
-		String username = (String) session.getAttribute("storedUsername");
-		Account acc = aRepo.findById(username).get();
+		
 		acc.setPassword(enteredPassword);
 		acc.setName(new Name(enteredFirst, enteredLast));
 		Address newAddress = new Address(enteredStreet, enteredCity, enteredState, enteredZip, enteredCountry);
@@ -100,5 +111,22 @@ public class UserController {
 		return "pages/user/homePage.jsp";
 	}
 	
+	@RequestMapping("/viewMyAccountInfo")
+	public String viewMyAccountInfo(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		model.addAttribute("modelName",acc.getName().toString());
+		model.addAttribute("modelAddress", acc.getAddress().toString());
+		
+		
+		return "pages/user/viewMyAccountInfo.jsp";
+		
+	}
 
 }

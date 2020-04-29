@@ -1,7 +1,5 @@
 package com.brandon.BasicWebApp2.model;
 
-import javax.persistence.Entity;
-
 /**
  * Stores account's actual name
  * @author bdabr
@@ -44,6 +42,10 @@ public class Name {
 		this.last = last;
 	}
 
+	@Override
+	public String toString() {
+		return first + " " + last;
+	}
 	
 	
 }

@@ -48,6 +48,7 @@ public class Account {
 		this.password = password;
 		this.name = name;
 		this.address = address;
+		
 	}
 
 	public String getUsername() {
