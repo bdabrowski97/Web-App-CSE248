@@ -21,6 +21,8 @@ public class Store {
 	@Id
 	private int storeID;
 	
+	public Store() {} // default
+	
 	/**
 	 * Basic store information
 	 * @param owner StoreOwner account thats in charge of store

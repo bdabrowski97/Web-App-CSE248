@@ -42,6 +42,7 @@ public class HTMLController {
 	public String home(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
+		System.out.println("stores: " + sRepo.count()); // DEBUG
 		return "pages/home.jsp";
 	}
 	

@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="styles/homeStyle.css" />
 </head>
 <body>
+	<% String store = (String) session.getAttribute("storedStoreName"); %>
+
+	<h1> Store <% out.print(store); %> Created</h1>
 
 </body>
 </html>

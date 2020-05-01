@@ -36,26 +36,56 @@ public class StoreOwnerController {
 	private ItemBoughtRepo ibRepo;
 	
 	
-	/*@RequestMapping("/storeOwnerHomePage")
-	public String storeOwnerHomePage(HttpServletRequest request) {
+	@RequestMapping("/storeSplash")
+	public String storeSplash(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+		if (session.getAttribute("storedUsername") == null) {
 			return "pages/home.jsp";
 		}
 		
-		return "pages/storeOwner/storeOwnerHomePage.jsp";
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		
+		
+		if (acc.getStoreID() == 0) {
+			return "pages/storeOwner/createStore.jsp";
+		} else {
+			return "pages/storeOwner/storeSplash.jsp";
+		}
 	}
 	
-	@RequestMapping("storeOwnerAccountSettings") 
-	public String storeOwnerAccountSettings(HttpServletRequest request) {
+	@RequestMapping("/createStoreFunction")
+	public String createStoreFunction(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+		if (session.getAttribute("storedUsername") == null) {
 			return "pages/home.jsp";
 		}
 		
-		return "pages/storeOwner/storeOwnerAccountSettings.jsp";
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
 		
-	}*/
+		String name = request.getParameter("storeName");
+		String tag = request.getParameter("storeTag");
+		
+		if (StringCheck.checkNullOrEmpty(name) == true || StringCheck.checkNullOrEmpty(tag) == true) {
+			return "pages/storeOwner/createStoreError.jsp";
+		}
+		
+		Store store = new Store(username, name, (int) (sRepo.count() + 1));
+		store.setTags(tag);
+		acc.setStoreID(store.getStoreID());
+		aRepo.save(acc);
+		sRepo.save(store);
+		
+		session.setAttribute("storedStoreName", store.getName());
+		
+		
+		return "pages/storeOwner/createdStore.jsp";
+	}
 	
 	
 	

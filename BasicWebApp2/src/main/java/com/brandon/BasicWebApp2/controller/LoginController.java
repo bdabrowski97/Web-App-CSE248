@@ -48,7 +48,7 @@ public class LoginController {
 		String enteredUsername = request.getParameter("username");
 		String enteredPassword = request.getParameter("password");
 		
-		model.addAttribute("username", enteredUsername);
+		//model.addAttribute("username", enteredUsername);
 		
 		if (enteredUsername.equals("") || enteredUsername.equals(null)) {
 			return "pages/login/loginInvalid.jsp";
@@ -58,13 +58,14 @@ public class LoginController {
 		
 			Account acc = aRepo.findById(enteredUsername).get();
 			
-			
-			
 			if (acc.getPassword().equals(enteredPassword)) {
 				
 				session.setAttribute("storedUsername", enteredUsername); // saves the username to the server that we'll use for all the other pages when needed
 				
 				if (acc.isStoreOwner() == true) {
+					session.setAttribute("storedStoreID", acc.getStoreID()); // saves the storeID of the store you own
+					Store store = sRepo.findById(acc.getStoreID()).get();
+					session.setAttribute("storedStoreName", store.getName()); // saves the store name of the store you own
 					return "pages/storeOwner/storeOwnerHomePage.jsp";
 				}
 				
