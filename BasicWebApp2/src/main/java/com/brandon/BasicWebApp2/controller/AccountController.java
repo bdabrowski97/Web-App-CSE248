@@ -51,6 +51,25 @@ public class AccountController {
 		return "pages/user/userHomePage.jsp";
 	}
 	
+	@RequestMapping("/accountSettingsPage")
+	public String accountSettings(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == true) {
+			return "pages/storeOwner/storeOwnerAccountSettings.jsp";
+		}
+		
+		
+		
+		return "pages/user/userAccountSettings.jsp";
+	}
+	
 	@RequestMapping("/accountInfoSettings")
 	public String userInfoSettings(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -61,12 +80,11 @@ public class AccountController {
 		String username = (String) session.getAttribute("storedUsername"); // grabs user info
 		Account acc = aRepo.findById(username).get();
 		
-		
+	
 		
 		return "pages/user/userInfoSettings.jsp";
-		
-		
 	}
+	
 	
 	@RequestMapping("/accountInfoSettingsFunction")
 	public String changeUserInfo(HttpServletRequest request) {
@@ -117,7 +135,7 @@ public class AccountController {
 		aRepo.save(acc);
 		
 		
-		return "pages/user/accountSettings.jsp";
+		return "pages/user/userAccountSettings.jsp";
 	}
 	
 	@RequestMapping("/viewMyAccountInfo")
@@ -170,7 +188,7 @@ public class AccountController {
 			acc.getPaymentInfo().setSecurityCode("payment");
 			acc.getPaymentInfo().setExperationDate("info");
 			aRepo.save(acc);
-			return "pages/user/accountSettings.jsp";
+			return "pages/user/userAccountSettings.jsp";
 		}
 		
 		if (num.length() != 16 || cvc.length() != 3 || expdate.length() != 4) {
@@ -182,7 +200,7 @@ public class AccountController {
 			aRepo.save(acc);
 		}
 		
-		return "pages/user/accountSettings.jsp";
+		return "pages/user/userAccountSettings.jsp";
 	}
 
 	

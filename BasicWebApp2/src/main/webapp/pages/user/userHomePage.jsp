@@ -16,8 +16,9 @@
 
 %>
 	
-	<h1>Welcome <% out.println(username); %></h1>
-	<button onclick=window.location="http://localhost:8080/accountSettings">Account Settings</button>
+	<h1>Welcome User <% out.println(username); %></h1>
+	<button onclick=window.location="http://localhost:8080/accountSettingsPage">Account Settings</button>
+	<button>Shop</button>
 	<button onclick=window.location="http://localhost:8080/">Logout</button>
 
 </body>

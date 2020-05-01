@@ -25,7 +25,7 @@
 		
 		<br>
 		<br>
-		<button  onclick=window.location="http://localhost:8080/accountSettings">Go Back</button>
+		<button  onclick=window.location="http://localhost:8080/accountSettingsPage">Go Back</button>
 	
 	
 	
