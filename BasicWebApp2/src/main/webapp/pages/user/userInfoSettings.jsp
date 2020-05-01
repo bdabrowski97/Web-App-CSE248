@@ -22,6 +22,10 @@
 			<input type="text" name="country" placeholder="COUNTRY"><br>
 			<input type="submit"><br>
 		</form>
+		
+		<br>
+		<br>
+		<button  onclick=window.location="http://localhost:8080/accountSettings">Go Back</button>
 	
 	
 	

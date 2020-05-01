@@ -141,6 +141,8 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(false);
 			acc.setStoreOwner(true);
+			PaymentInfo pi = new PaymentInfo("no","payment","method");
+			acc.setPaymentInfo(pi);
 			
 			aRepo.save(acc);
 			return "pages/register/madeAccount.jsp";
@@ -185,6 +187,8 @@ public class RegisterController {
 			Account acc = new Account(enteredUsername, enteredPassword, name, address);
 			acc.setAdmin(true);
 			acc.setStoreOwner(false);
+			PaymentInfo pi = new PaymentInfo("no","payment","method");
+			acc.setPaymentInfo(pi);
 			
 			aRepo.save(acc);
 			return "pages/register/madeAccount.jsp";
