@@ -46,7 +46,9 @@ public class AccountController {
 		String username = (String) session.getAttribute("storedUsername");
 		Account acc = aRepo.findById(username).get();
 		
-		
+		if (acc.isStoreOwner() == true) {
+			return "pages/storeOwner/storeOwnerHomePage.jsp";
+		}
 		
 		return "pages/user/userHomePage.jsp";
 	}
@@ -66,7 +68,6 @@ public class AccountController {
 		}
 		
 		
-		
 		return "pages/user/userAccountSettings.jsp";
 	}
 	
@@ -80,7 +81,9 @@ public class AccountController {
 		String username = (String) session.getAttribute("storedUsername"); // grabs user info
 		Account acc = aRepo.findById(username).get();
 		
-	
+		if (acc.isStoreOwner() == true) {
+			return "pages/storeOwner/storeOwnerInfoSettings.jsp";
+		}
 		
 		return "pages/user/userInfoSettings.jsp";
 	}
@@ -121,7 +124,7 @@ public class AccountController {
 				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
 				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
 			
-					
+					if (acc.isStoreOwner() == true) { return "pages/storeOwner/storeOwnerAccountSettings.jsp"; }
 					
 					return "pages/user/userInfoSettingsInvalid.jsp";
 		}  // check all for validity
@@ -148,10 +151,15 @@ public class AccountController {
 		String username = (String) session.getAttribute("storedUsername");
 		Account acc = aRepo.findById(username).get();
 		
+		
+		
 		model.addAttribute("modelName",acc.getName().toString());
 		model.addAttribute("modelAddress", acc.getAddress().toString());
 		model.addAttribute("modelPaymentInfo",acc.getPaymentInfo().toString());
 		
+		if (acc.isStoreOwner() == true) {
+			return "pages/storeOwner/viewMyAccountInfo.jsp";
+		}
 		
 		return "pages/user/viewMyAccountInfo.jsp";
 		
@@ -163,6 +171,14 @@ public class AccountController {
 		if (session.getAttribute("storedUsername") == null) { // checking for valid login
 			return "pages/home.jsp";
 		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == true || acc.isAdmin() == true) {  // prevents admin/store owner from adding credit details
+			return "pages/home.jsp";
+		}
+		
 		return "pages/user/changePaymentInfo.jsp";
 	}
 	
@@ -175,6 +191,11 @@ public class AccountController {
 		
 		String userame = (String) session.getAttribute("storedUsername");
 		Account acc = aRepo.findById(userame).get();
+		
+		if (acc.isStoreOwner() == true || acc.isAdmin() == true) { // prevents admin/store owner from adding credit details
+			return "pages/home.jsp";
+		}
+		
 		
 		String num = (String) request.getParameter("num");
 		String cvc = (String) request.getParameter("cvc");
