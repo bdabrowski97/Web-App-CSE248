@@ -15,7 +15,8 @@ public class BasicWebApp2Application {
 	 * 
 	 * -storedUsername — user that is currently logged in 
 	 * - if Store is not created, storeID == 0
-	 * 
+	 *  - storedStoreID — user that currently logged in storeID
+	 *  - storedStoreName — name of the store thats logged in
 	 * 
 	 * 
 	 * 

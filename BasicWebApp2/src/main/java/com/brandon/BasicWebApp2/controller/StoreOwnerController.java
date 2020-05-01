@@ -87,6 +87,68 @@ public class StoreOwnerController {
 		return "pages/storeOwner/createdStore.jsp";
 	}
 	
+	@RequestMapping("/openOrClose")
+	public String openOrClose(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		return "pages/storeOwner/openOrClose.jsp";
+	}
+	
+	@RequestMapping("/openOrCloseOpen")
+	public String openOrCloseFunction(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		int id = (Integer) session.getAttribute("storedStoreID");
+		Store store = sRepo.findById(id).get();
+		store.setOpen(true);
+		sRepo.save(store);
+		
+		return "pages/storeOwner/storeSplash.jsp";
+	}
+	
+	@RequestMapping("/openOrCloseClose")
+	public String openOrCloseFunction2(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		int id = (Integer) session.getAttribute("storedStoreID");
+		Store store = sRepo.findById(id).get();
+		store.setOpen(false);
+		sRepo.save(store);
+		
+		
+		return "pages/storeOwner/storeSplash.jsp";
+	}
+	
 	
 	
 	
