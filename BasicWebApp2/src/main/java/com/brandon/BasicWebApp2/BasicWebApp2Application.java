@@ -14,10 +14,9 @@ public class BasicWebApp2Application {
 	 * LIST OF IDS WE USE IN THE SESSIONS
 	 * 
 	 * -storedUsername — user that is currently logged in 
+	 * - if Store is not created, storeID == 0
 	 * 
 	 * 
-	 * 
-	 * I HATE GITHUB WITH A BURNING PASSION
 	 * 
 	 * 
 	 */

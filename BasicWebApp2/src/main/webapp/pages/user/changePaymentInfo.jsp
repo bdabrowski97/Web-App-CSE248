@@ -10,7 +10,7 @@
 </head>
 <body>
 
-		<form action="changePaymentInfo2">
+		<form action="changePaymentInfoFunction">
 			Note: Enter 0 for every category to delete current payment information<br><br>
 			<input type="text" name="num" placeholder="NUMBER 0000 0000 0000 0000"><br>
 			<input type="text" name="cvc" placeholder="CVC 000"><br>

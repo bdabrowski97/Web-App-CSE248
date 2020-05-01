@@ -21,7 +21,7 @@ import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
-public class UserController {
+public class AccountController {
 	
 	@Autowired
 	private PurchaseRepo oRepo;
@@ -36,16 +36,22 @@ public class UserController {
 	private ItemBoughtRepo ibRepo;
 	
 	
-	@RequestMapping("/userHomePage")
+	@RequestMapping("/homePage")
 	public String userHomePage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("storedUsername") == null) {
 			return "pages/home.jsp";
 		}
-		return "pages/user/homePage.jsp";
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		
+		
+		return "pages/user/userHomePage.jsp";
 	}
 	
-	@RequestMapping("/userInfoSettings")
+	@RequestMapping("/accountInfoSettings")
 	public String userInfoSettings(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("storedUsername") == null) { // checking for valid login
@@ -54,16 +60,15 @@ public class UserController {
 		
 		String username = (String) session.getAttribute("storedUsername"); // grabs user info
 		Account acc = aRepo.findById(username).get();
-		if (acc.isStoreOwner() == true) {
-			// return storeowner page
-			return "pages/user/storeOwnerInfoSettings.jsp";
-		} else {
-			return "pages/user/userInfoSettings.jsp";
-		}
+		
+		
+		
+		return "pages/user/userInfoSettings.jsp";
+		
 		
 	}
 	
-	@RequestMapping("/changeUserInfo")
+	@RequestMapping("/accountInfoSettingsFunction")
 	public String changeUserInfo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("storedUsername") == null) { // checking for valid login
@@ -97,7 +102,10 @@ public class UserController {
 				StringCheck.checkNullOrEmpty(enteredStreet) == true || StringCheck.checkNullOrEmpty(enteredCity) == true ||
 				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
 				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
-			return "pages/user/userInfoSettingsInvalid.jsp";
+			
+					
+					
+					return "pages/user/userInfoSettingsInvalid.jsp";
 		}  // check all for validity
 		
 		
@@ -108,7 +116,8 @@ public class UserController {
 		
 		aRepo.save(acc);
 		
-		return "pages/user/homePage.jsp";
+		
+		return "pages/user/accountSettings.jsp";
 	}
 	
 	@RequestMapping("/viewMyAccountInfo")
@@ -139,7 +148,7 @@ public class UserController {
 		return "pages/user/changePaymentInfo.jsp";
 	}
 	
-	@RequestMapping("changePaymentInfo2")
+	@RequestMapping("changePaymentInfoFunction")
 	public String changePaymentInfo2(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("storedUsername") == null) { // checking for valid login

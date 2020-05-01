@@ -59,12 +59,17 @@ public class LoginController {
 			Account acc = aRepo.findById(enteredUsername).get();
 			
 			
-			if (acc.getPassword().equals(enteredPassword)){
+			
+			if (acc.getPassword().equals(enteredPassword)) {
+				
 				session.setAttribute("storedUsername", enteredUsername); // saves the username to the server that we'll use for all the other pages when needed
+				
 				if (acc.isStoreOwner() == true) {
-					return "pages/storeOwner/homePage.jsp";
+					return "pages/storeOwner/storeOwnerHomePage.jsp";
 				}
-				return "pages/user/homePage.jsp";
+				
+				
+				return "pages/user/userHomePage.jsp";
 				
 			} else {
 				return "pages/login/loginInvalid.jsp";

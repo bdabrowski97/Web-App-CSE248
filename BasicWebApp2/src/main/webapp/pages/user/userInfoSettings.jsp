@@ -10,7 +10,7 @@
 </head>
 <body>
 
-		<form action="changeUserInfo">
+		<form action="accountInfoSettingsFunction">
 			<input type="text" name="password" placeholder="PASSWORD"><br>
 			<input type="text" name="firstName" placeholder="FIRST NAME"><br>
 			<input type="text" name="lastName" placeholder="LAST NAME"><br>
