@@ -64,8 +64,12 @@ public class LoginController {
 				
 				if (acc.isStoreOwner() == true) {
 					session.setAttribute("storedStoreID", acc.getStoreID()); // saves the storeID of the store you own
-					Store store = sRepo.findById(acc.getStoreID()).get();
-					session.setAttribute("storedStoreName", store.getName()); // saves the store name of the store you own
+					if (acc.getStoreID() != 0) {
+						Store store = sRepo.findById(acc.getStoreID()).get();
+						session.setAttribute("storedStoreName", store.getName()); // saves the store name of the store you own
+						session.setAttribute("storedStoreTag", store.getTags()); // saves the tag of the store you own
+					}
+					
 					return "pages/storeOwner/storeOwnerHomePage.jsp";
 				}
 				

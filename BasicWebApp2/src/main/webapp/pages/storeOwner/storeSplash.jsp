@@ -9,11 +9,13 @@
 </head>
 <body>
 	
-	<% String store = (String) session.getAttribute("storedStoreName"); %>
+	<% String store = (String) session.getAttribute("storedStoreName");
+	   String tag = (String) session.getAttribute("storedStoreTag"); %>
 	
 	<h1>Manage <% out.print(store); %> </h1>
+	<p><%out.print(tag); %></p><br>
 	<button>Manage Items</button>
-	<button>Change Store Info</button>
+	<button onclick=window.location="http://localhost:8080/changeStoreInfo">Change Store Info</button>
 	<button>View Sales</button>
 	<button onclick=window.location="http://localhost:8080/openOrClose">Open/Close Store</button>
 	<button onclick=window.location="http://localhost:8080/homePage">Go Back</button>

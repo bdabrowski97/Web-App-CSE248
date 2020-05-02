@@ -78,13 +78,15 @@ public class StoreOwnerController {
 		Store store = new Store(username, name, (int) (sRepo.count() + 1));
 		store.setTags(tag);
 		acc.setStoreID(store.getStoreID());
+		session.setAttribute("storedStoreTag", tag);
+		session.setAttribute("storedStoreName", name);
 		aRepo.save(acc);
 		sRepo.save(store);
 		
 		session.setAttribute("storedStoreName", store.getName());
 		
 		
-		return "pages/storeOwner/createdStore.jsp";
+		return "pages/storeOwner/storeSplash.jsp";
 	}
 	
 	@RequestMapping("/openOrClose")
@@ -149,6 +151,60 @@ public class StoreOwnerController {
 		return "pages/storeOwner/storeSplash.jsp";
 	}
 	
+	@RequestMapping("/changeStoreInfo")
+	public String changeStoreInfo(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		return "pages/storeOwner/changeStoreInfo.jsp";
+	}
+	
+	@RequestMapping("/changeStoreInfoFunction")
+	public String changeStoreInfoFunction(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		Store store = sRepo.findById(acc.getStoreID()).get();
+		String name = request.getParameter("storeName");
+		String tag = request.getParameter("storeTag");
+		
+		if (StringCheck.checkNullOrEmpty(name) == true || StringCheck.checkNullOrEmpty(tag) == true) {
+			return "pages/storeOwner/changeStoreInfoError.jsp";
+		} else {
+			
+			store.setName(name);
+			store.setTags(tag);
+			session.setAttribute("storedStoreName", name);
+			session.setAttribute("storedStoreTag", tag);
+			
+			sRepo.save(store);
+			
+			return "pages/storeOwner/storeSplash.jsp";
+		}
+		
+		
+		
+		
+		
+	}
 	
 	
 	
