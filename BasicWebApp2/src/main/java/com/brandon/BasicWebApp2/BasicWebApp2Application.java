@@ -18,7 +18,7 @@ public class BasicWebApp2Application {
 	 *  - storedStoreID — user that currently logged in storeID
 	 *  - storedStoreName — name of the store thats logged in
 	 *  - storedStoreTag — tag of store you have logged in
-	 * 
+	 * 	- allAccounts — array of all accounts in database
 	 * 
 	 * 
 	 */

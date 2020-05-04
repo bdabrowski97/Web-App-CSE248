@@ -9,12 +9,12 @@
 </head>
 <body>
 	<% String username = (String) session.getAttribute("storedUsername"); %>
-	<h1>Hello Admin <%out.print(username); %></h1>
-	<button onclick=window.location="http://localhost:8080/accountInfoSettings">Change Account Info</button>
-	<button onclick=window.location="http://localhost:8080/viewMyAccountInfo">View Account Info</button>
+	<h1><% out.print(username); %> Admin Management</h1>
+	<br>
+	<button onclick=window.location="http://localhost:8080/viewAllAccounts">View Accounts</button>
+	<button>View Stores</button>
+	<button>View Purchases</button>
 	<button onclick=window.location="http://localhost:8080/homePage">Go Back</button>
-	
-	
 	
 
 </body>

@@ -175,9 +175,8 @@ public class AccountController {
 		model.addAttribute("modelAddress", acc.getAddress().toString());
 		model.addAttribute("modelPaymentInfo",acc.getPaymentInfo().toString());
 		
-		if (acc.isStoreOwner() == true) {
-			return "pages/storeOwner/viewMyAccountInfo.jsp";
-		}
+		if (acc.isStoreOwner() == true) { return "pages/storeOwner/viewMyAccountInfo.jsp"; }
+		if (acc.isAdmin() == true) { return "pages/admin/viewMyAccountInfo.jsp";}
 		
 		return "pages/user/viewMyAccountInfo.jsp";
 		

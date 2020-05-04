@@ -1,5 +1,6 @@
 package com.brandon.BasicWebApp2.controller;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,14 +23,13 @@ import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
 @Controller
-public class HTMLController {
+public class AdminController {
 	
-
+	@Autowired
+	private PurchaseRepo oRepo;
+	
 	@Autowired
 	private AccountRepo aRepo;
-	
-	@Autowired 
-	private PurchaseRepo oRepo;
 	
 	@Autowired
 	private StoreRepo sRepo;
@@ -38,50 +38,45 @@ public class HTMLController {
 	private ItemBoughtRepo ibRepo;
 	
 	
-	
-	@RequestMapping("/")
-	public String home(HttpServletRequest request) {
+	@RequestMapping("/managementMenu")
+	public String managementMenu(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		session.invalidate();
-		// System.out.println("stores: " + sRepo.count()); // DEBUG
-		
-		
-		/*
-			Iterable<Account> iterable = aRepo.findAll();
-			Collection<Account> collection = new ArrayList<>();
-			iterable.forEach(collection::add);
-			System.out.println("SIZE: " + collection.size());
-			Account[] accs = collection.toArray(new Account[collection.size()]);
-			for (int i = 0; i < accs.length; i++) {
-				System.out.println(accs[i].toString());
-			}
-		
-			session.setAttribute("array", accs);
-		*/
-		
-		return "pages/home.jsp";
-	}
-	
-
-	@RequestMapping("/meme") // dumb joke
-	public String meme() {
-		return "pages/meme.jsp";
-	}
-	
-	@RequestMapping("/accountSettings") // login page
-	public String accountSettingsPage(HttpServletRequest request) {	
-		HttpSession session = request.getSession();
-		if (session.getAttribute("storedUsername") == null) {
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
 			return "pages/home.jsp";
 		}
+		
 		String username = (String) session.getAttribute("storedUsername");
 		Account acc = aRepo.findById(username).get();
-		System.out.println(acc.toString());
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
 		
-		return "pages/user/accountSettings.jsp";
+		
+		return "pages/admin/managementMenu.jsp";
+	}
+	
+	@RequestMapping("/viewAllAccounts")
+	public String viewAccounts(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		
+		Iterable<Account> iterable = aRepo.findAll();
+		Collection<Account> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		Account[] accs = collection.toArray(new Account[collection.size()]);
+		session.setAttribute("allAccounts", accs);
+		
+		
+		
+		return "pages/admin/viewAllAccounts.jsp";
 	}
 	
 	
 	
-
+	
 }
