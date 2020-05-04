@@ -1,6 +1,7 @@
 package com.brandon.BasicWebApp2.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +43,19 @@ public class HTMLController {
 	public String home(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		System.out.println("stores: " + sRepo.count()); // DEBUG
+		// System.out.println("stores: " + sRepo.count()); // DEBUG
+		
+		/* RETURNING AN ARRAY FROM A REPO
+			Iterable<Account> iterable = aRepo.findAll();
+			Collection<Account> collection = new ArrayList<>();
+			iterable.forEach(collection::add);
+			System.out.println("SIZE: " + collection.size());
+			Account[] accs = collection.toArray(new Account[collection.size()]);
+			for (int i = 0; i < accs.length; i++) {
+				System.out.println(accs[i].toString());
+			}
+		*/
+		
 		return "pages/home.jsp";
 	}
 	
