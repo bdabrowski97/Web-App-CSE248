@@ -2,15 +2,15 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
 	<meta charset="ISO-8859-1">
 	<title>Insert title here</title>
-	<script src="js/homePageScript.js"></script>
 	<link rel="stylesheet" href="styles/homeStyle.css" />
 </head>
 <body>
-	<h1 style="color:red">Store Owner</h1>
-		<form action="accountInfoSettingsFunction">
+	<p style="color:red">Error: Invalid Entry</p>
+	<h1 style="color:red">Admin</h1>
+	<form action="accountInfoSettingsFunction">
 			<input type="text" name="password" placeholder="PASSWORD"><br>
 			<input type="text" name="firstName" placeholder="FIRST NAME"><br>
 			<input type="text" name="lastName" placeholder="LAST NAME"><br>
@@ -27,7 +27,6 @@
 		<br>
 		<button  onclick=window.location="http://localhost:8080/accountSettingsPage">Go Back</button>
 	
-	
-	
+
 </body>
 </html>

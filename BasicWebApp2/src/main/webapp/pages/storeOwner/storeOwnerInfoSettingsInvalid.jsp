@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="styles/homeStyle.css" />
 </head>
 <body>
+	<p style="color:red"">Error: Invalid Entry</p>
 	<h1 style="color:red">Store Owner</h1>
 		<form action="accountInfoSettingsFunction">
 			<input type="text" name="password" placeholder="PASSWORD"><br>

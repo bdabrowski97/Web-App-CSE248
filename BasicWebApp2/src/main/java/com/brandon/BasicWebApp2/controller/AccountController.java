@@ -52,6 +52,10 @@ public class AccountController {
 			return "pages/storeOwner/storeOwnerHomePage.jsp";
 		}
 		
+		if (acc.isAdmin() == true) {
+			return "pages/admin/adminHomePage.jsp";
+		}
+		
 		return "pages/user/userHomePage.jsp";
 	}
 	
@@ -67,6 +71,10 @@ public class AccountController {
 		
 		if (acc.isStoreOwner() == true) {
 			return "pages/storeOwner/storeOwnerAccountSettings.jsp";
+		}
+		
+		if (acc.isAdmin() == true) {
+			return "pages/admin/adminAccountSettings.jsp";
 		}
 		
 		
@@ -85,6 +93,10 @@ public class AccountController {
 		
 		if (acc.isStoreOwner() == true) {
 			return "pages/storeOwner/storeOwnerInfoSettings.jsp";
+		}
+		
+		if (acc.isAdmin() == true) {
+			return "pages/admin/adminInfoSettings.jsp";
 		}
 		
 		return "pages/user/userInfoSettings.jsp";
@@ -126,7 +138,8 @@ public class AccountController {
 				StringCheck.checkNullOrEmpty(enteredState) == true || StringCheck.checkNullOrEmpty(enteredZip) == true ||
 				StringCheck.checkNullOrEmpty(enteredCountry) == true) {
 			
-					if (acc.isStoreOwner() == true) { return "pages/storeOwner/storeOwnerAccountSettings.jsp"; }
+					if (acc.isStoreOwner() == true) { return "pages/storeOwner/storeOwnerInfoSettingsInvalid.jsp"; }
+					if (acc.isAdmin() == true) { return "pages/admin/adminInfoSettingsInvalid.jsp";}
 					
 					return "pages/user/userInfoSettingsInvalid.jsp";
 		}  // check all for validity
@@ -138,6 +151,9 @@ public class AccountController {
 		acc.setAddress(newAddress);
 		
 		aRepo.save(acc);
+		
+		if (acc.isStoreOwner() == true) { return "pages/storeOwner/storeOwnerAccountSettings.jsp";}
+		if (acc.isAdmin() == true) { return "pages/admin/adminAccountSettings.jsp";}
 		
 		
 		return "pages/user/userAccountSettings.jsp";

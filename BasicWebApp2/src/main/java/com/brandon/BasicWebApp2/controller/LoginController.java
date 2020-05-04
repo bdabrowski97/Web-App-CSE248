@@ -62,6 +62,11 @@ public class LoginController {
 				
 				session.setAttribute("storedUsername", enteredUsername); // saves the username to the server that we'll use for all the other pages when needed
 				
+				if (acc.isAdmin() == true) {
+					return "pages/admin/adminHomePage.jsp";
+				}
+				
+				
 				if (acc.isStoreOwner() == true) {
 					session.setAttribute("storedStoreID", acc.getStoreID()); // saves the storeID of the store you own
 					if (acc.getStoreID() != 0) {
