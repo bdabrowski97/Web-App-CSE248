@@ -56,7 +56,7 @@ public class HTMLController {
 			}
 		
 			session.setAttribute("array", accs);
-			
+		
 		
 		return "pages/home.jsp";
 	}

@@ -33,11 +33,20 @@
 	<button onclick="testAlert()">Test</button> -->
 	
 	<table>
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>OwnsStore?</th>
+		</tr>
+	</thead>
 		<% Account[] array = (Account[]) session.getAttribute("array"); %>
 			<%for (int i = 0; i < array.length; i++) { %>
 				<tr>
 					<td>
-						<% out.print(array[i].toString()); %>
+						<% out.print(array[i].getUsername()); %>
+					</td>
+					<td>
+						<%if (array[i].isStoreOwner() == true) { out.print("StoreOwner");} if (array[i].isAdmin() == true){ out.print("Admin");} else { out.print("User");}%>
 					</td>
 				</tr>
 			
