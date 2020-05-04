@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ page import="com.brandon.BasicWebApp2.model.*" %>
+<%@ page import="java.util.ArrayList" %>
 <html>
 <head>
 
@@ -30,6 +31,24 @@
 	
 	<button onclick="goToConsole()">Console</button>
 	<button onclick="testAlert()">Test</button> -->
+	
+	<table>
+		<% Account[] array = (Account[]) session.getAttribute("array"); %>
+			<%for (int i = 0; i < array.length; i++) { %>
+				<tr>
+					<td>
+						<% out.print(array[i].toString()); %>
+					</td>
+				</tr>
+			
+			
+			<%} %>
+		
+	</table>
+	
+	
+	
+	
 	
 	<br>
 	<br>
