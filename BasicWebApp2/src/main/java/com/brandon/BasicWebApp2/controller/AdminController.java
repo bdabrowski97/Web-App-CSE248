@@ -74,6 +74,28 @@ public class AdminController {
 		return "pages/admin/viewAllAccounts.jsp";
 	}
 	
+	@RequestMapping("/viewAllStores")
+	public String viewStores(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		Iterable<Store> iterable = sRepo.findAll();
+		Collection<Store> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		Store[] stores = collection.toArray(new Store[collection.size()]);
+		session.setAttribute("allStores", stores);
+		
+		
+		return "pages/admin/viewAllStores.jsp";
+	}
+	
+	
 	@RequestMapping("/inspectAccount")
 	public String inspectAccount(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();

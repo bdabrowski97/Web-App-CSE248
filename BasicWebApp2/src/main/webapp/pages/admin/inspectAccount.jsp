@@ -13,6 +13,9 @@
 	<h1>INSPECTING <%out.print(username); %></h1>
 	<p>NAME<br>${theirName}<br><br>PASSWORD<br>${theirPassword}<br><br>ADDRESS<br>${theirAddress}<br><br></p>
 	<button>View Purchase History</button>
+	<br>
+	<br>
+	<br>
 	<button onclick=window.location="http://localhost:8080/viewAllAccounts">Go Back</button>
 	
 	

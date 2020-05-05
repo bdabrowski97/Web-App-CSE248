@@ -12,7 +12,7 @@
 	<h1><% out.print(username); %> Admin Management</h1>
 	<br>
 	<button onclick=window.location="http://localhost:8080/viewAllAccounts">View Accounts</button>
-	<button>View Stores</button>
+	<button onclick=window.location="http://localhost:8080/viewAllStores">View Stores</button>
 	<button>View Purchases</button>
 	<button onclick=window.location="http://localhost:8080/homePage">Go Back</button>
 	
