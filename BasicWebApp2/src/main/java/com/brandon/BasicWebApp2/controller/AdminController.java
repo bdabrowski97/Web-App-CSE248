@@ -71,9 +71,45 @@ public class AdminController {
 		Account[] accs = collection.toArray(new Account[collection.size()]);
 		session.setAttribute("allAccounts", accs);
 		
-		
-		
 		return "pages/admin/viewAllAccounts.jsp";
+	}
+	
+	@RequestMapping("/inspectAccount")
+	public String inspectAccount(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		String accInspect = request.getParameter("username");
+		
+		if (StringCheck.checkNullOrEmpty(accInspect) == true) { // inspecting non-existant account
+			return "pages/admin/viewAllAccountsInvalid.jsp";
+		}
+		
+		
+		session.setAttribute("viewThisAccount", accInspect);
+		
+		if (aRepo.existsById(accInspect) == false) { // expecting non-existant account
+			return "pages/admin/viewAllAccountsInvalid.jsp";
+		}
+		
+		Account accInspecting = aRepo.findById(accInspect).get();
+		
+		String name = accInspecting.getName().toString();
+		String password = accInspecting.getPassword().toString();
+		String address = accInspecting.getAddress().toString();
+		
+		model.addAttribute("theirName", name);
+		model.addAttribute("theirPassword", password);
+		model.addAttribute("theirAddress", address);
+		
+		
+		return "pages/admin/inspectAccount.jsp";
 	}
 	
 	

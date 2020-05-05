@@ -14,6 +14,8 @@
 	<button onclick=window.location="http://localhost:8080/managementMenu">Go Back</button>
 	<br><br><br>
 	
+	<p style="color:red">Error: Invalid Entry</p>
+	
 	<form action="inspectAccount">
 		<input type="text" name="username" placeholder="VIEW ACCOUNT"><br>
 		<input type="submit"><br>
