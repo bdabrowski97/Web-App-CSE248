@@ -278,14 +278,14 @@ public class StoreOwnerController {
 		String itemDescription = request.getParameter("description");
 		double itemPrice = Double.parseDouble(request.getParameter("price"));
 		
-																System.out.println("IT BEGINS");
+		System.out.println("ITEMS: " + iRepo.count());												
 		
 		if (iRepo.count() < 1) {
 			Item item = new Item(itemName,itemDescription,itemPrice);
 			item.setStoreID(store.getStoreID());
 			item.setItemID(1);
 			iRepo.save(item);
-																System.out.println("ITEM MADE");
+																
 			return "pages/storeOwner/manageItems.jsp";
 		} else {
 			Item item = new Item(itemName, itemDescription, 50);
@@ -299,13 +299,14 @@ public class StoreOwnerController {
 			for (int i = 0; i< items.length;i++) {
 				if (max < items[i].getItemID()) {
 					max = items[i].getItemID();
-					max++;
-					item.setItemID(max);
+					
 				}
 			}
+			max++;
+			item.setItemID(max);
 			
 			// IT ISNT WORKING ON THE FORM SUBMIT BUTTON
-																		System.out.println("ITEM MADE");
+																		
 			
 			
 			iRepo.save(item);
