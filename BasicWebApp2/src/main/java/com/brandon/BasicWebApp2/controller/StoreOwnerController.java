@@ -92,7 +92,7 @@ public class StoreOwnerController {
 		session.setAttribute("storedStoreName", store.getName());
 		
 		
-		return "pages/storeOwner/storeSplash.jsp";
+		return "pages/home.jsp";
 	}
 	
 	@RequestMapping("/openOrClose")
@@ -288,7 +288,7 @@ public class StoreOwnerController {
 			item.setItemID(1);
 			iRepo.save(item);
 																
-			return "pages/storeOwner/manageItems.jsp";
+			return "pages/storeOwner/storeSplash.jsp";
 		} else {
 			Item item = new Item(itemName, itemDescription, 50);
 			item.setStoreID(store.getStoreID());

@@ -95,6 +95,26 @@ public class AdminController {
 		return "pages/admin/viewAllStores.jsp";
 	}
 	
+	@RequestMapping("/viewAllPurchases")
+	public String viewAllPurchases(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		Iterable<Purchase> iterable = oRepo.findAll();
+		Collection<Purchase> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		Purchase[] purchases = collection.toArray(new Purchase[collection.size()]);
+		session.setAttribute("siteWidePurchases", purchases);
+		
+		
+		return "pages/admin/viewAllPurchases.jsp";
+	}
 	
 	@RequestMapping("/inspectAccount")
 	public String inspectAccount(HttpServletRequest request, Model model) {

@@ -10,36 +10,33 @@
 	<link rel="stylesheet" href="styles/homeStyle.css" />
 </head>
 <body>
-	
-	<button onclick=window.location="http://localhost:8080/viewAllAccounts">Go Back</button>
-	<br>
-	<br>
-	<br>
+	<h1>All Accounts</h1>
+	<button onclick=window.location="http://localhost:8080/managementMenu">Go Back</button>
+	<br><br><br>
 	
 	<table>
 	<thead>
 		<tr>
 			<th>Order ID</th>
-			<th>Store</th>
+			<th>Username</th>
 			<th>Total</th>
-		
 		</tr>
 	</thead>
-		<% ArrayList<Purchase> array =  (ArrayList<Purchase>) session.getAttribute("theirPurchases"); %>
-			<%for (int i = 0; i < array.size(); i++) { %>
+		<% Purchase[] array = (Purchase[]) session.getAttribute("siteWidePurchases"); %>
+			<%for (int i = 0; i < array.length; i++) { %>
 				<tr>
 					<td>
-						<% out.print(array.get(i).getOrderID()); %>
+						<% out.print(array[i].getOrderID()); %>
 					</td>
-					
 					<td>
-						<% out.print(array.get(i).getStoreName()); %>
+						<% out.print(array[i].getUserID()); %>
 					</td>
-					
 					<td>
-						<% out.print(array.get(i).getTotal()); %>
+						<%out.print(array[i].getStoreName()); %>
 					</td>
-					
+					<td>
+						$<%out.print(array[i].getTotal()); %>
+					</td>
 					
 				</tr>
 			
