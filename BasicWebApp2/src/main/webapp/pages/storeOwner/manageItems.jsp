@@ -13,7 +13,7 @@
 
 	<button onclick=window.location="http://localhost:8080/storeSplash">Go Back</button>
 	<br><br><br>
-	<button>Add Item</button>
+	<button onclick=window.location="http://localhost:8080/createItem">Add Item</button>
 	<br><br><br>
 	
 	<table>

@@ -13,13 +13,15 @@
 	
 	<h1>Create Item</h1>
 	
-	<form>
-		<form action="createItemFunction">
+	
+	<form action="createItemFunction">
 		<input type="text" name="name" placeholder="NAME"><br>
 		<input type="text" name="description" placeholder="DESCRIPTION"><br>
-		<input type="text" name="price" placeholder="PRICE">
+		<input type="text" name="price" placeholder="PRICE"><br>
 		<input type="submit"><br>
 	</form>
+	
+	
 	<br><br><br>
 	<button onclick=window.location="http://localhost:8080/manageItems">Go Back</button>
 

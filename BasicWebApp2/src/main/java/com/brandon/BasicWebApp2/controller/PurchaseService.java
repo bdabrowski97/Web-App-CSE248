@@ -8,7 +8,7 @@ import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.model.Purchase;
 
 @Service
-public class OrderService {
+public class PurchaseService {
 	private PurchaseRepo repo;
 	
 	public ArrayList<Purchase> getAllOrders(){
