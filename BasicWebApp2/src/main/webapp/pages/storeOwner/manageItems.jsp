@@ -14,7 +14,7 @@
 	<button onclick=window.location="http://localhost:8080/storeSplash">Go Back</button>
 	<br><br><br>
 	<button onclick=window.location="http://localhost:8080/createItem">Add Item</button>
-	<br>
+	<br><br><br>
 	<form action="deleteThisItem">
 		Delete This Item: <input type="text" name="id" placeholder="ITEM ID">
 		<input type="submit">
@@ -27,6 +27,7 @@
 			<th>ID</th>
 			<th>Item</th>
 			<th>Description</th>
+			<th>Price</th>
 		
 		</tr>
 	</thead>
@@ -43,6 +44,10 @@
 					
 					<td>
 						<% out.print(array.get(i).getDescription()); %>
+					</td>
+					
+					<td>
+						$<% out.print(array.get(i).getPrice()); %>
 					</td>
 				</tr>
 			

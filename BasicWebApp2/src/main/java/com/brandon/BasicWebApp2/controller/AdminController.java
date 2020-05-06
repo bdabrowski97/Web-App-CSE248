@@ -121,20 +121,50 @@ public class AdminController {
 		}
 		
 		Account accInspecting = aRepo.findById(accInspect).get();
-		
-		String name = accInspecting.getName().toString();
-		String password = accInspecting.getPassword().toString();
-		String address = accInspecting.getAddress().toString();
-		
-		model.addAttribute("theirName", name);
-		model.addAttribute("theirPassword", password);
-		model.addAttribute("theirAddress", address);
+		session.setAttribute("inspectingAccount", accInspecting);
 		
 		
 		return "pages/admin/inspectAccount.jsp";
 	}
 	
 	
+	@RequestMapping("/inspectAccountPurchases")
+	public String inspectAccountPurchases(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		Account accInspect = (Account) session.getAttribute("inspectingAccount");
+		
+		Iterable<Purchase> iterable = oRepo.findAll();
+		Collection<Purchase> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		Purchase[] purchases = collection.toArray(new Purchase[collection.size()]);
+		
+		ArrayList<Purchase> theirPurchases = new ArrayList<>();
+		for (int i = 0; i < purchases.length;i++) {
+			if (accInspect.getUsername().equals(purchases[i].getUserID())) {
+				theirPurchases.add(purchases[i]);
+			}
+		}
+		
+		session.setAttribute("theirPurchases", theirPurchases);
+		
+		
+		
+		
+		return "pages/admin/inspectAccountPurchases.jsp";
+	}
+	
+	@RequestMapping("/inspectStore")
+	public String inspectStore(HttpServletRequest request) {
+		return null;
+	}
 	
 	
 }

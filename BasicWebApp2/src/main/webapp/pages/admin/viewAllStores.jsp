@@ -14,10 +14,11 @@
 	<button onclick=window.location="http://localhost:8080/managementMenu">Go Back</button>
 	<br><br><br>
 	
-	<form action="inspectAccount">
-		<input type="text" name="username" placeholder="VIEW ACCOUNT"><br>
+	<form action="inspectStore">
+		<input type="text" name="store" placeholder="VIEW STORE"><br>
 		<input type="submit"><br>
 	</form>
+	
 	<br>
 	<br>
 	<br>
@@ -28,6 +29,7 @@
 			<th>ID</th>
 			<th>Name</th>
 			<th>Owner</th>
+			<th>Open/Closed</th>
 		</tr>
 	</thead>
 		<% Store[] array = (Store[]) session.getAttribute("allStores"); %>
@@ -41,6 +43,9 @@
 					</td>
 					<td>
 						<% out.print(array[i].getOwner().toString()); %>
+					</td>
+					<td>
+						<% if (array[i].isOpen() == true) { out.print("OPEN");} else { out.print("CLOSED");} %>
 					</td>
 				</tr>
 			

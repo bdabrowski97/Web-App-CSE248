@@ -13,7 +13,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class Store {
-//	private List<Item> menu;
+
 	private String owner;
 	private String tags;
 	private String name;
@@ -36,10 +36,7 @@ public class Store {
 		this.storeID = id;
 	}
 
-	// Getters and Setters
-//	public List<Item> getMenu() {
-//		return menu;
-//	}
+
 
 	public boolean isOpen() {
 		return open;

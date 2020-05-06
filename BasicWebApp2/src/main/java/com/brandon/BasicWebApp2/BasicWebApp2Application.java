@@ -23,6 +23,7 @@ public class BasicWebApp2Application {
 	 * 	- viewThisAccount — username data for looking at a specfiic account after selecting from admin menus
 	 * 	- viewThisStoreID — storeid for looking at a specific store
 	 * - myItems — used when managing your own store, has all of the store's items
+	 * - inspectingAccount
 	 * 
 	 * 
 	 */

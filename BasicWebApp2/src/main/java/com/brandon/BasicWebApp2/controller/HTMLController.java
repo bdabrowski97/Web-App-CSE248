@@ -43,21 +43,6 @@ public class HTMLController {
 	public String home(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		// System.out.println("stores: " + sRepo.count()); // DEBUG
-		
-		
-		/*
-			Iterable<Account> iterable = aRepo.findAll();
-			Collection<Account> collection = new ArrayList<>();
-			iterable.forEach(collection::add);
-			System.out.println("SIZE: " + collection.size());
-			Account[] accs = collection.toArray(new Account[collection.size()]);
-			for (int i = 0; i < accs.length; i++) {
-				System.out.println(accs[i].toString());
-			}
-		
-			session.setAttribute("array", accs);
-		*/
 		
 		return "pages/home.jsp";
 	}

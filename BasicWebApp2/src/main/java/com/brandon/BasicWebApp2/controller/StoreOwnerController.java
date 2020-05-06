@@ -130,6 +130,7 @@ public class StoreOwnerController {
 		Store store = sRepo.findById(id).get();
 		store.setOpen(true);
 		sRepo.save(store);
+		session.setAttribute("loggedInStore", store);
 		
 		return "pages/storeOwner/storeSplash.jsp";
 	}
@@ -152,6 +153,7 @@ public class StoreOwnerController {
 		Store store = sRepo.findById(id).get();
 		store.setOpen(false);
 		sRepo.save(store);
+		session.setAttribute("loggedInStore", store);
 		
 		
 		return "pages/storeOwner/storeSplash.jsp";
