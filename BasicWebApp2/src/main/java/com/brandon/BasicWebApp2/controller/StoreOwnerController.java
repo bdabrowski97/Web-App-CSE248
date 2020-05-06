@@ -306,16 +306,42 @@ public class StoreOwnerController {
 			item.setItemID(max);
 			
 			// IT ISNT WORKING ON THE FORM SUBMIT BUTTON
-																		
-			
 			
 			iRepo.save(item);
 			
 			
-			return "pages/storeOwner/manageItems.jsp";
+			return "pages/storeOwner/storeSplash.jsp";
 			
 		}
 		
+	}
+	
+	
+	
+	@RequestMapping("/deleteThisItem")
+	public String deleteThisitem(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		int id =  Integer.parseInt(request.getParameter("id"));
+		if (iRepo.existsById(id) == true) {
+			Item itemToDelete = iRepo.findById(id).get();
+			if (acc.getStoreID() == itemToDelete.getStoreID()) { // verify the user own's the item they're about to delete
+				iRepo.deleteById(id);
+				return "pages/storeOwner/deletedItem.jsp";
+			}
+		}
+		
+		return "pages/storeOwner/deletedItemInvalid.jsp";
 	}
 	
 	
