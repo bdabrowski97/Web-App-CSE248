@@ -2,6 +2,7 @@ package com.brandon.BasicWebApp2.controller;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
 import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
+import com.brandon.BasicWebApp2.dao.ItemRepo;
 import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
@@ -35,6 +37,9 @@ public class StoreOwnerController {
 	
 	@Autowired
 	private ItemBoughtRepo ibRepo;
+	
+	@Autowired
+	private ItemRepo iRepo;
 	
 	
 	@RequestMapping("/storeSplash")
@@ -201,11 +206,121 @@ public class StoreOwnerController {
 			return "pages/storeOwner/storeSplash.jsp";
 		}
 		
-		
-		
-		
-		
 	}
+	
+	@RequestMapping("/manageItems")
+	public String manageItems(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		Store store = sRepo.findById(acc.getStoreID()).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		Iterable<Item> iterable = iRepo.findAll();
+		Collection<Item> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		Item[] items = collection.toArray(new Item[collection.size()]);
+		ArrayList<Item> myItems = new ArrayList<>();
+		for (int i = 0; i < items.length; i++) {
+			if (items[i].getStoreID() == store.getStoreID()) {
+				myItems.add(items[i]);
+			}
+		}
+		
+		session.setAttribute("myItems", myItems);
+		
+		
+		
+		return "pages/storeOwner/manageItems.jsp";
+	}
+	
+	@RequestMapping("/createItem")
+	public String createItem(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		
+		return "pages/storeOwner/createItem.jsp";
+	}
+	
+	@RequestMapping("/createItemFunction")
+	public String createItemFunction(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		Store store = sRepo.findById(acc.getStoreID()).get();
+		
+		if (acc.isStoreOwner() == false) {
+			return "pages/home.jsp";
+		}
+		
+		String itemName = request.getParameter("name");
+		String itemDescription = request.getParameter("description");
+		double itemPrice = Double.parseDouble(request.getParameter("price"));
+		
+		
+		if (iRepo.count() < 1) {
+			Item item = new Item(itemName, itemDescription, itemPrice);
+			item.setStoreID(store.getStoreID());
+			item.setItemID(1);
+		} else {
+			Item item = new Item(itemName, itemDescription, itemPrice);
+			item.setStoreID(store.getStoreID());
+			int max = 0;
+			
+			Iterable<Item> iterable = iRepo.findAll(); // finding max itemID available
+			Collection<Item> collection = new ArrayList<>();
+			iterable.forEach(collection::add);
+			Item[] items = collection.toArray(new Item[collection.size()]);
+			for (int i = 0; i< items.length;i++) {
+				if (max < items[i].getItemID()) {
+					max = items[i].getItemID();
+					max++;
+					item.setItemID(max);
+				}
+			}
+			
+			
+			
+		}
+		
+		
+		
+		return "pages/storeOwner/manageItems.jsp";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

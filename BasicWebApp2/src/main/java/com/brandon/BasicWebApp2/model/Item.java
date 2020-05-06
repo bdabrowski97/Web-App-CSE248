@@ -56,6 +56,23 @@ public class Item {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
+	public int getItemID() {
+		return itemID;
+	}
+
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
+	}
+
+	public int getStoreID() {
+		return storeID;
+	}
+
+	public void setStoreID(int storeID) {
+		this.storeID = storeID;
+	}
+	
 	
 	
 	
