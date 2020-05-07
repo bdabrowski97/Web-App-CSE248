@@ -18,7 +18,7 @@
 	
 	<h1>Welcome User <% out.println(username); %></h1>
 	<button onclick=window.location="http://localhost:8080/accountSettingsPage">Account Settings</button>
-	<button>Shop</button>
+	<button onclick=window.location="http://localhost:8080/shopSplash">Shop</button>
 	<button onclick=window.location="http://localhost:8080/">Logout</button>
 
 </body>

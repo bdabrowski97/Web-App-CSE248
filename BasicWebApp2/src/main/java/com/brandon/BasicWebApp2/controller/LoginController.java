@@ -79,7 +79,8 @@ public class LoginController {
 					return "pages/storeOwner/storeOwnerHomePage.jsp";
 				}
 				
-				
+				ShoppingCart cart = new ShoppingCart();
+				session.setAttribute("cart", cart);
 				return "pages/user/userHomePage.jsp";
 				
 			} else {

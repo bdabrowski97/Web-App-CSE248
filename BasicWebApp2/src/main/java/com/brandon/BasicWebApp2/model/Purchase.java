@@ -12,6 +12,8 @@ public class Purchase {
 	private String storeName;
 	private String userID; // all items belong to this username
 	private double total;
+	private double subTotal;
+	private boolean canceled;
 	
 	public Purchase() {} // default
 	
@@ -19,7 +21,7 @@ public class Purchase {
 		this.purchaseID = orderID;
 		this.storeID = storeID;
 		this.userID = userID;
-	
+		this.canceled = false;
 		this.total = total;
 	}
 
@@ -70,6 +72,23 @@ public class Purchase {
 
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
+	}
+	
+
+	public boolean isCanceled() {
+		return canceled;
+	}
+
+	public void setCanceled(boolean canceled) {
+		this.canceled = canceled;
+	}
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
 	}
 
 	@Override
