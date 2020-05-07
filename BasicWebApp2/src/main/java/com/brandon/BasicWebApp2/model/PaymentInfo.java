@@ -14,8 +14,17 @@ public class PaymentInfo {
 		experationDate = expDate;
 	}
 
+	public boolean paymentValid() {
+		if (mainNum.length() != 16 || securityCode.length() != 3 || experationDate.length() != 4) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 	
 	// getters and setters
+	
+	
 	
 	public String getMainNum() {
 		return mainNum;

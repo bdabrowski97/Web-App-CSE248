@@ -25,13 +25,7 @@ public class Purchase {
 		this.total = total;
 	}
 
-	public int getOrderID() {
-		return purchaseID;
-	}
 
-	public void setOrderID(int orderID) {
-		this.purchaseID = orderID;
-	}
 
 	public int getStoreID() {
 		return storeID;

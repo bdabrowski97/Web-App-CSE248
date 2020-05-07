@@ -16,7 +16,8 @@ public class ItemBought {
 	private String description;
 	private double price;
 	@Id
-	private int purchaseID; // ties this item to the purchase it was placed in
+	private int purchaseID; // keep these in database
+	private int orderID; // ties it to the order it wa splaced in
 	
 	
 	public ItemBought() {} // default
@@ -31,7 +32,6 @@ public class ItemBought {
 		this.name = name;
 		this.description = dec;
 		this.price = price;
-		this.purchaseID = purchaseID;
 	}
 	
 	// Getters and Setters
@@ -61,6 +61,14 @@ public class ItemBought {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(int orderID) {
+		this.orderID = orderID;
 	}
 	
 	

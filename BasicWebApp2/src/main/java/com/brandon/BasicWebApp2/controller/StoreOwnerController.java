@@ -290,7 +290,7 @@ public class StoreOwnerController {
 																
 			return "pages/storeOwner/storeSplash.jsp";
 		} else {
-			Item item = new Item(itemName, itemDescription, 50);
+			Item item = new Item(itemName, itemDescription, itemPrice);
 			item.setStoreID(store.getStoreID());
 			int max = 0;
 			
@@ -332,6 +332,10 @@ public class StoreOwnerController {
 		
 		if (acc.isStoreOwner() == false) {
 			return "pages/home.jsp";
+		}
+		
+		if (request.getParameter("id") == null || request.getParameter("id").equals("")) {
+			return "pages/storeOwner/manageItems.jsp";
 		}
 		
 		int id =  Integer.parseInt(request.getParameter("id"));

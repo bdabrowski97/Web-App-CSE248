@@ -21,11 +21,21 @@
 	<br>
 	
 	<button onclick=window.location="http://localhost:8080/browseStores">Go Back & Empty Cart</button>
-	<button>View Cart</button>
+	<button onclick=window.location="http://localhost:8080/viewCart">View Cart</button>
 	
 	<br>
 	<br>
 	<br>
+	
+	<form action="addToCart">
+		<input type="text" name="itemID"	placeholder="ITEM ID">
+		<input type="submit">
+	</form>
+	
+	<br>
+	<br>
+	<br>
+	
 	
 	<table>
 		<thead>

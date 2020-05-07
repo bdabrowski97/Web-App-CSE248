@@ -17,11 +17,12 @@ public class ShoppingCart {
 	
 	public void calculatePrice() {
 		double total = 0;
-		double tax = total * .0882;
 		for (int i = 0; i < items.size(); i++) {
 			total += items.get(i).getPrice();
 		}
+		double tax = total * .0882;
 		total += tax;
+		total = Math.floor(total * 100) / 100;
 		setPrice(total);
 	}
 	
