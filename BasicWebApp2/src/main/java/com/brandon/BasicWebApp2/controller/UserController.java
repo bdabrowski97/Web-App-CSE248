@@ -204,7 +204,7 @@ public class UserController {
 		
 		//create the purchase object
 		if (oRepo.count() < 1) { 
-			purchase.setPurchaseID(0);
+			purchase.setPurchaseID(1);
 		} else {
 			int max = 0;
 			Iterable<Purchase> iterable = oRepo.findAll();
@@ -235,7 +235,7 @@ public class UserController {
 			itemBought.setOrderID(purchase.getPurchaseID());
 			
 			if (ibRepo.count() < 1) {
-				itemBought.setPurchaseID(0);
+				itemBought.setPurchaseID(1);
 			} else {
 				int max2 = 0;
 				Iterable<ItemBought> iterable = ibRepo.findAll();
@@ -353,7 +353,7 @@ public class UserController {
 		oRepo.save(purchase);
 		
 		
-		return "pages/user/shopSplash.jsp";
+		return "pages/user/purchaseCancelled.jsp";
 	}
 	
 	

@@ -39,14 +39,14 @@
 		<% for (int i = 0; i < stores.size(); i++) { %>
 			<tr>
 				<td>
-					<% out.print(stores.get(i).getStoreID() + "   "); %>
+					<% out.print(stores.get(i).getStoreID()); %>
 				</td>
 				<td>
-					<% out.print(stores.get(i).getName() + "    "); %>
+					<% out.print(stores.get(i).getName()); %>
 				</td>
 				
 				<td>
-					<% out.print(stores.get(i).getTags() + "    "); %>
+					<% out.print(stores.get(i).getTags()); %>
 				</td>
 			
 			</tr>

@@ -26,8 +26,8 @@
 	
 	DATE PURCHASED<br>
 	<% out.print(purchase.getDate().toString()); %><br><br>
-	</p>
-	ITEMS BOUGHT<br>
+	
+	ITEMS BOUGHT<br></p>
 	<table class="center">
 	<thead>
 		<th>Item</th>

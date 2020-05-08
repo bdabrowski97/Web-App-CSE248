@@ -49,16 +49,16 @@
 		<% for (int i = 0; i < items.size(); i++) { %>
 			<tr>
 				<td>
-					<% out.print(items.get(i).getItemID() + "    "); %>
+					<% out.print(items.get(i).getItemID()); %>
 				</td>
 				<td>
-					<% out.print(items.get(i).getName() + "    "); %>
+					<% out.print(items.get(i).getName()); %>
 				</td>
 				<td>
-					<% out.print(items.get(i).getDescription() + "    "); %>
+					<% out.print(items.get(i).getDescription()); %>
 				</td>
 				<td>
-					$<% out.print(items.get(i).getPrice() + "    "); %>
+					$<% out.print(items.get(i).getPrice()); %>
 				</td>
 				
 				
