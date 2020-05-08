@@ -13,10 +13,12 @@
 		String username = (String) session.getAttribute("storedUsername");
 	%>
 	
-	<p>NAME<br>${modelName}<br><br>ADDRESS<br>${modelAddress}<br><br></p>
+	<p>
+	NAME<br>${modelName}<br><br>ADDRESS<br>${modelAddress}<br><br>
 	
 	
 	<button  onclick=window.location="http://localhost:8080/accountSettingsPage">Go Back</button>
+	</p>
 	
 </body>
 </html>

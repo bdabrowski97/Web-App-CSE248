@@ -13,12 +13,13 @@
 	<% Account acc = (Account) session.getAttribute("inspectingAccount"); %>
 	
 	<h1>INSPECTING <%out.print(acc.getUsername()); %></h1>
-	<p>NAME<br><%out.print(acc.getName().toString()); %><br><br>PASSWORD<br><%out.print(acc.getPassword()); %><br><br>ADDRESS<br><%out.print(acc.getAddress().toString()); %><br><br></p>
+	<p>NAME<br><%out.print(acc.getName().toString()); %><br><br>PASSWORD<br><%out.print(acc.getPassword()); %><br><br>ADDRESS<br><%out.print(acc.getAddress().toString()); %><br><br>
 	<button onclick=window.location="http://localhost:8080/inspectAccountPurchases">View Purchase History</button>
 	<br>
 	<br>
 	<br>
 	<button onclick=window.location="http://localhost:8080/viewAllAccounts">Go Back</button>
+	</p>
 	
 	
 	

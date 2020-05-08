@@ -15,7 +15,7 @@
 	<br><br><br>
 	
 	<form action="inspectAccount">
-		<input type="text" name="username" placeholder="VIEW ACCOUNT"><br>
+		<input type="text" name="username" placeholder="VIEW ACCOUNT">
 		<input type="submit"><br>
 	</form>
 	<br>

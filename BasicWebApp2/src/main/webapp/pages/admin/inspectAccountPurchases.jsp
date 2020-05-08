@@ -16,12 +16,22 @@
 	<br>
 	<br>
 	
+	<form action="adminViewPurchase2">
+		<input type="text" name="purchaseID" placeholder="PURCHASE ID">
+		<input type="submit">
+	</form>
+	
+	<br>
+	<br>
+	<br>
+	
 	<table>
 	<thead>
 		<tr>
 			<th>Order ID</th>
 			<th>Store</th>
 			<th>Total</th>
+			<th>Status</th>
 		
 		</tr>
 	</thead>
@@ -29,7 +39,7 @@
 			<%for (int i = 0; i < array.size(); i++) { %>
 				<tr>
 					<td>
-						<% out.print(array.get(i).getOrderID()); %>
+						<% out.print(array.get(i).getPurchaseID()); %>
 					</td>
 					
 					<td>
@@ -37,7 +47,10 @@
 					</td>
 					
 					<td>
-						<% out.print(array.get(i).getTotal()); %>
+						$<% out.print(array.get(i).getTotal()); %>
+					</td>
+					<td>
+						<% if (array.get(i).isCanceled() == true) { out.print("CANCELLED"); } else { out.print("open");} %>
 					</td>
 					
 					

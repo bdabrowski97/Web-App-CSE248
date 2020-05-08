@@ -16,7 +16,7 @@
 
 
 <body>
-	<p><%= TestClass.capsMsg("stay at home club") %></p>
+	
 	<h1 onclick="goToMeme()">FINAL PROJECT</h1>
 	<br>
 	<p><button onclick=window.location="http://localhost:8080/register">REGISTER</button> <button onclick=window.location="http://localhost:8080/login">LOGIN</button></p>

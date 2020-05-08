@@ -10,10 +10,11 @@
 <body>
 	<% String username = (String) session.getAttribute("storedUsername"); %>
 	<h1>Hello Admin <%out.print(username); %></h1>
+	<p>
 	<button onclick=window.location="http://localhost:8080/accountInfoSettings">Change Account Info</button>
 	<button onclick=window.location="http://localhost:8080/viewMyAccountInfo">View Account Info</button>
 	<button onclick=window.location="http://localhost:8080/homePage">Go Back</button>
-	
+	</p>
 	
 	
 

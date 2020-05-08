@@ -213,6 +213,40 @@ public class AdminController {
 		return "pages/admin/adminViewPurchase.jsp";
 	}
 	
+	@RequestMapping("/adminViewPurchase2")
+	public String adminViewPurchase2(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		int id = Integer.parseInt(request.getParameter("purchaseID"));
+		
+		Purchase sale = oRepo.findById(id).get();
+		
+		
+		session.setAttribute("viewThisPurchase", sale);
+		
+		Iterable<ItemBought> iterable = ibRepo.findAll(); // finding max itemID available
+		ArrayList<ItemBought> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		
+		ArrayList<ItemBought> itemsInSale = new ArrayList<>();
+		for (int i = 0; i < collection.size(); i++) {
+			if (sale.getPurchaseID() == collection.get(i).getOrderID()) {
+				itemsInSale.add(collection.get(i));
+			}
+		}
+		
+		session.setAttribute("viewThisPurchaseItems", itemsInSale);
+		
+		return "pages/admin/adminViewPurchase2.jsp";
+	}
+	
 	@RequestMapping("/adminCancelOrder")
 	public String adminCancelOrder(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -231,10 +265,78 @@ public class AdminController {
 		return "pages/admin/adminCancelOrder.jsp";
 	}
 	
-	@RequestMapping("/inspectStore")
-	public String inspectStore(HttpServletRequest request) {
-		return null;
+	@RequestMapping("/adminCancelOrder2")
+	public String adminCancelOrder2(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		Purchase purchase = (Purchase) session.getAttribute("viewThisPurchase");
+		purchase.setCanceled(true);
+		oRepo.save(purchase);
+		
+		return "pages/admin/adminCancelOrder2.jsp";
 	}
 	
+	@RequestMapping("/inspectStore")
+	public String inspectStore(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		if (request.getParameter("store").equals(null) || request.getParameter("store").equals("")) {
+			return "pages/admin/viewAllStores.jsp";
+		}
+		int id =  Integer.parseInt(request.getParameter("store"));
+		if (sRepo.existsById(id) == false) { return "pages/admin/viewAllStores.jsp"; }
+		
+		Store store = sRepo.findById(id).get();
+		
+		Iterable<Purchase> iterable = oRepo.findAll();
+		ArrayList<Purchase> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		
+		ArrayList<Purchase> storeSales = new ArrayList<>();
+		for (int i = 0; i < collection.size(); i++) {
+			if (collection.get(i).getStoreID() == store.getStoreID()) {
+				storeSales.add(collection.get(i));
+			}
+		}
+		
+		session.setAttribute("store", store);
+		session.setAttribute("sales", storeSales);
+		
+		return "pages/admin/inspectStore.jsp";
+	}
+	
+	
+	@RequestMapping("/forceClose")
+	public String forceClose(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		Store store = (Store) session.getAttribute("store");
+		store.setOpen(false);
+		sRepo.save(store);
+		
+		
+		return "pages/admin/forceClose.jsp";
+	}
 	
 }

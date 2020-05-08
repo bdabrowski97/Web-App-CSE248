@@ -15,7 +15,7 @@
 	<br><br><br>
 	
 	<form action="inspectStore">
-		<input type="text" name="store" placeholder="VIEW STORE"><br>
+		<input type="text" name="store" placeholder="VIEW STORE">
 		<input type="submit"><br>
 	</form>
 	
