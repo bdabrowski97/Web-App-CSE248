@@ -17,9 +17,9 @@
 %>
 	<p style="color:red">You need proper payment information <br> before browsing the stores</p>
 	<h1>Welcome User <% out.println(username); %></h1>
-	<button onclick=window.location="http://localhost:8080/accountSettingsPage">Account Settings</button>
+	<p><button onclick=window.location="http://localhost:8080/accountSettingsPage">Account Settings</button>
 	<button onclick=window.location="http://localhost:8080/shopSplash">Shop</button>
-	<button onclick=window.location="http://localhost:8080/">Logout</button>
+	<button onclick=window.location="http://localhost:8080/">Logout</button></p>
 
 </body>
 </html>

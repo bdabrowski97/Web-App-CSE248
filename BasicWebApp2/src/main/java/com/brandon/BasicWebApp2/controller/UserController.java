@@ -102,6 +102,7 @@ public class UserController {
 			return "pages/home.jsp";
 		}
 		
+		if (request.getParameter("shopID").equals("") || request.getParameter("shopID").equals(null)) { return "pages/user/browseStores.jsp"; }
 		int shopID = Integer.parseInt(request.getParameter("shopID"));
 		System.out.println("GOT ID: " + shopID);
 		
@@ -198,7 +199,11 @@ public class UserController {
 		//Process the order
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 		Purchase purchase = new Purchase();
-		if (oRepo.count() < 1) {
+		
+		if (cart.getItems().size() < 1) { return "pages/user/browseStores.jsp"; }
+		
+		//create the purchase object
+		if (oRepo.count() < 1) { 
 			purchase.setPurchaseID(0);
 		} else {
 			int max = 0;
@@ -221,8 +226,8 @@ public class UserController {
 		purchase.setUserID(acc.getUsername());
 		purchase.setSubTotal(cart.getSubtotal());
 		purchase.setTotal(cart.getPrice());
-		
-		
+	
+		// create the itemBought objects and insert into Purchase object
 		ArrayList<Item>	itemsBeingBought = cart.getItems();
 		for (int i = 0; i < itemsBeingBought.size(); i++) {
 			Item storeThis = itemsBeingBought.get(i);
@@ -244,10 +249,12 @@ public class UserController {
 				max2++;
 				itemBought.setPurchaseID(max2);
 			}
-			ibRepo.save(itemBought);
+			ibRepo.save(itemBought); // save all itemBought objects to repo
 		}
 		
-		oRepo.save(purchase);
+		oRepo.save(purchase); // save purchase object to repo
+		
+		// these orders have variables that connect with each other so we can track them between multiple tables
 		
 		
 	
@@ -255,9 +262,99 @@ public class UserController {
 	}
 	
 	
+	@RequestMapping("viewMyPurchases")
+	public String viewMyPurchases(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // verfying user account
+			return "pages/home.jsp";
+		}
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == true || acc.isStoreOwner() == true) {
+			return "pages/home.jsp";
+		}
+		
+		Iterable<Purchase> iterable = oRepo.findAll();
+		ArrayList<Purchase> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		
+		ArrayList<Purchase> myPurchases = new ArrayList<>();
+		for (int i = 0; i < collection.size(); i++) {
+			if (collection.get(i).getUserID().equals(acc.getUsername())) {
+				myPurchases.add(collection.get(i));
+			}
+		}
+		
+		session.setAttribute("myPurchases", myPurchases);
+		
+		return "pages/user/viewMyPurchases.jsp";
+	}
+	
+	@RequestMapping("viewPurchaseDetails")
+	public String viewPurchaseDetails(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // verfying user account
+			return "pages/home.jsp";
+		}
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == true || acc.isStoreOwner() == true) {
+			return "pages/home.jsp";
+		}
+		
+		if (request.getParameter("purchaseID").equals(null) || request.getParameter("purchaseID").equals("")) { return "pages/user/viewMyPurchases.jsp"; }
+		int purchaseID = Integer.parseInt(request.getParameter("purchaseID"));
+		if (oRepo.existsById(purchaseID) == false) {
+			return "pages/user/viewMyPurchases.jsp";
+		}
+		
+		Purchase viewThisPurchase = oRepo.findById(purchaseID).get();
+		if (viewThisPurchase.getUserID().equals(acc.getUsername())) { // confirms that you're the one who  placed the purchase
+			
+			session.setAttribute("viewThisPurchase", viewThisPurchase);
+			
+			Iterable<ItemBought> iterable = ibRepo.findAll();
+			ArrayList<ItemBought> collection = new ArrayList<>();
+			iterable.forEach(collection::add);
+			
+			ArrayList<ItemBought> itemsBought = new ArrayList<>();
+			
+			for (int i = 0; i < collection.size(); i++) {
+				if (viewThisPurchase.getPurchaseID() == collection.get(i).getOrderID()) {
+					itemsBought.add(collection.get(i));
+				}
+			}
+			
+			session.setAttribute("viewThisPurchaseItems", itemsBought);
+			
+			return "pages/user/viewPurchaseDetails.jsp";
+		}
+		
+		
+		
+		return "pages/user/viewMyPurchases.jsp";
+	}
 	
 	
-	
+	@RequestMapping("/cancelOrder")
+	public String cancelOrder(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // verfying user account
+			return "pages/home.jsp";
+		}
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == true || acc.isStoreOwner() == true) {
+			return "pages/home.jsp";
+		}
+		
+		Purchase purchase = (Purchase) session.getAttribute("viewThisPurchase");
+		purchase.setCanceled(true);
+		oRepo.save(purchase);
+		
+		
+		return "pages/user/shopSplash.jsp";
+	}
 	
 	
 }

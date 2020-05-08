@@ -19,6 +19,10 @@ button {
 	
 }
 
+  table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
 
 td{
 	padding: 0px 100000px 0px 0px;

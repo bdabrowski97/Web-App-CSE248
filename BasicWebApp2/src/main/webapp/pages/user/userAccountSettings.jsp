@@ -14,10 +14,10 @@
 	%>
 	
 	<h1>Hello <%out.println(username); %></h1>
-	<button onclick=window.location="http://localhost:8080/accountInfoSettings">Change Account Info</button>
+	<p><button onclick=window.location="http://localhost:8080/accountInfoSettings">Change Account Info</button>
 	<button onclick=window.location="http://localhost:8080/viewMyAccountInfo">View Account Info</button>
 	<button onclick=window.location="http://localhost:8080/changePaymentInfo">Payment Method</button>
-	<button  onclick=window.location="http://localhost:8080/homePage">Go Back</button>
+	<button  onclick=window.location="http://localhost:8080/homePage">Go Back</button></p>
 	
 </body>
 </html>

@@ -16,9 +16,9 @@
 	<br>
 	<br>
 	<br>
-	<button onclick=window.location="http://localhost:8080/browseStores">Browse Stores</button>
-	<button>View/Cancel Purchases</button>
-	<button onclick=window.location="http://localhost:8080/homePage">Go Back</button>
+<p>	<button onclick=window.location="http://localhost:8080/browseStores">Browse Stores</button>
+	<button onclick=window.location="http://localhost:8080/viewMyPurchases">View/Cancel Purchases</button>
+	<button onclick=window.location="http://localhost:8080/homePage">Go Back</button> </p>
 	
 	<p>Note: You can only purchase from one store at a time.<br> Leaving a store's page will erase all contents of shopping cart.</p>
 	

@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="styles/homeStyle.css" />
 </head>
 <body>
-	<button onclick=window.location="http://localhost:8080/openOrCloseOpen">Open</button>
+	<p><button onclick=window.location="http://localhost:8080/openOrCloseOpen">Open</button>
 	<button onclick=window.location="http://localhost:8080/openOrCloseClose">Close</button>
 	<br>
 	<br>

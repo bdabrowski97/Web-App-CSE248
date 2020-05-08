@@ -9,6 +9,6 @@
 </head>
 <body>
 	<h1>Account ${username} created</h1>
-	<button onclick=window.location="http://localhost:8080/">Finish</button>
+	<p><button onclick=window.location="http://localhost:8080/">Finish</button></p>
 </body>
 </html>

@@ -11,7 +11,7 @@
 	<% String username = (String) session.getAttribute("storedUsername"); %>
 	<h1>Hello StoreOwner <%out.print(username); %></h1>
 	<br>
-	<button onclick=window.location="http://localhost:8080/accountSettingsPage">Account Settings</button>
+	<p><button onclick=window.location="http://localhost:8080/accountSettingsPage">Account Settings</button>
 	<button onclick=window.location="http://localhost:8080/storeSplash">Store Management</button>
 	<button onclick=window.location="http://localhost:8080">Logout</button>
 	

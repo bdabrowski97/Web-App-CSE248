@@ -1,5 +1,7 @@
 package com.brandon.BasicWebApp2.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -14,8 +16,10 @@ public class Purchase {
 	private double total;
 	private double subTotal;
 	private boolean canceled;
+	private Date date;
 	
-	public Purchase() {} // default
+	
+	public Purchase() {this.date = new Date();} // default
 	
 	public Purchase(int orderID, int storeID, String userID, double total) {
 		this.purchaseID = orderID;
@@ -23,9 +27,18 @@ public class Purchase {
 		this.userID = userID;
 		this.canceled = false;
 		this.total = total;
+		this.date = new Date();
 	}
 
 
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	public int getStoreID() {
 		return storeID;
