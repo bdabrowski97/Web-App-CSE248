@@ -13,7 +13,7 @@
 	<br>
 	<button onclick=window.location="http://localhost:8080/viewAllAccounts">View Accounts</button>
 	<button onclick=window.location="http://localhost:8080/viewAllStores">View Stores</button>
-	<button>View Purchases</button>
+	<button onclick=window.location="http://localhost:8080/viewAllPurchases">View Purchases</button>
 	<button onclick=window.location="http://localhost:8080/homePage">Go Back</button>
 	
 

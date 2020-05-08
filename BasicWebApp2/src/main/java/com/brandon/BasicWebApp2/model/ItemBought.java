@@ -17,7 +17,7 @@ public class ItemBought {
 	private double price;
 	@Id
 	private int purchaseID; // keep these in database
-	private int orderID; // ties it to the order it wa splaced in
+	private int orderID; // ties it to the order it was placed in
 	
 	
 	public ItemBought() {} // default

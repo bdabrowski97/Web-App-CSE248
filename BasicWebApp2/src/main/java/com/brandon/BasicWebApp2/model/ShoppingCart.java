@@ -31,6 +31,7 @@ public class ShoppingCart {
 		for (int i = 0; i < items.size(); i++) {
 			sub += items.get(i).getPrice();
 		}
+		sub = Math.floor(sub * 100) / 100;
 		setSubtotal(sub);
 	}
 	

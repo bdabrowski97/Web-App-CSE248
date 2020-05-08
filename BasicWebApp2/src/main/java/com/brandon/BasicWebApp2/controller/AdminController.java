@@ -107,10 +107,10 @@ public class AdminController {
 		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
 		
 		Iterable<Purchase> iterable = oRepo.findAll();
-		Collection<Purchase> collection = new ArrayList<>();
+		ArrayList<Purchase> collection = new ArrayList<>();
 		iterable.forEach(collection::add);
-		Purchase[] purchases = collection.toArray(new Purchase[collection.size()]);
-		session.setAttribute("siteWidePurchases", purchases);
+		
+		session.setAttribute("storeWidePurchases", collection);
 		
 		
 		return "pages/admin/viewAllPurchases.jsp";
@@ -179,6 +179,56 @@ public class AdminController {
 		
 		
 		return "pages/admin/inspectAccountPurchases.jsp";
+	}
+	
+	@RequestMapping("/adminViewPurchase")
+	public String adminViewPurchase(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		int id = Integer.parseInt(request.getParameter("purchaseID"));
+		
+		Purchase sale = oRepo.findById(id).get();
+		session.setAttribute("viewThisPurchase", sale);
+		
+		Iterable<ItemBought> iterable = ibRepo.findAll(); // finding max itemID available
+		ArrayList<ItemBought> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		
+		ArrayList<ItemBought> itemsInSale = new ArrayList<>();
+		for (int i = 0; i < collection.size(); i++) {
+			if (sale.getPurchaseID() == collection.get(i).getOrderID()) {
+				itemsInSale.add(collection.get(i));
+			}
+		}
+		
+		session.setAttribute("viewThisPurchaseItems", itemsInSale);
+		
+		return "pages/admin/adminViewPurchase.jsp";
+	}
+	
+	@RequestMapping("/adminCancelOrder")
+	public String adminCancelOrder(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // checking for valid login
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
+		
+		Purchase purchase = (Purchase) session.getAttribute("viewThisPurchase");
+		purchase.setCanceled(true);
+		oRepo.save(purchase);
+		
+		return "pages/admin/adminCancelOrder.jsp";
 	}
 	
 	@RequestMapping("/inspectStore")

@@ -25,7 +25,7 @@
 	
 	<p><button onclick=window.location="http://localhost:8080/manageItems">Manage Items</button>
 	<button onclick=window.location="http://localhost:8080/changeStoreInfo">Change Store Info</button>
-	<button>View Sales</button>
+	<button onclick=window.location="http://localhost:8080/viewSales">View Sales</button>
 	<button onclick=window.location="http://localhost:8080/openOrClose">Open/Close Store</button>
 	<button onclick=window.location="http://localhost:8080/homePage">Go Back</button>
 	

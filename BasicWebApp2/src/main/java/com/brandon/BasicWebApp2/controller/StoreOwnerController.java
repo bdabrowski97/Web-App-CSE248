@@ -351,11 +351,87 @@ public class StoreOwnerController {
 	}
 	
 	
+	@RequestMapping("/viewSales")
+	public String viewSales(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) {
+			return "pages/home.jsp";
+		}
+		
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		
+		if (acc.isStoreOwner() == false) { return "pages/home.jsp"; }
+		
+		Iterable<Purchase> iterable = oRepo.findAll(); // finding max itemID available
+		ArrayList<Purchase> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		
+		ArrayList<Purchase> sales = new ArrayList<>();
+		for (int i = 0; i < collection.size(); i++) {
+			if (acc.getStoreID() == collection.get(i).getStoreID()) {
+				sales.add(collection.get(i));
+			}
+		}
+		
+		session.setAttribute("sales", sales);
+		
+		
+		
+		return "pages/storeOwner/viewSales.jsp";
+	}
 	
 	
+	@RequestMapping("/viewSaleDetails")
+	public String viewSaleDetails(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { return "pages/home.jsp"; }
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isStoreOwner() == false) { return "pages/home.jsp"; }
+		
+		if (request.getParameter("purchaseID").equals(null) || request.getParameter("purchaseID").equals("")) {
+			return "pages/storeOwner/viewSales.jsp";
+		}
+		
+		int purchaseID = Integer.parseInt(request.getParameter("purchaseID"));
+		if (oRepo.existsById(purchaseID) == false) { return "pages/storeOwner/viewSales.jsp";}
+		
+		Purchase sale = oRepo.findById(purchaseID).get();
+		session.setAttribute("inspectSale", sale);
+		
+		Iterable<ItemBought> iterable = ibRepo.findAll(); // finding max itemID available
+		ArrayList<ItemBought> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		
+		ArrayList<ItemBought> itemsInSale = new ArrayList<>();
+		for (int i = 0; i < collection.size(); i++) {
+			if (sale.getPurchaseID() == collection.get(i).getOrderID()) {
+				itemsInSale.add(collection.get(i));
+			}
+		}
+		
+		session.setAttribute("itemsInSale", itemsInSale);
+		
+		
+		return "pages/storeOwner/viewSaleDetails.jsp";
+	}
 	
-	
-	
+	@RequestMapping("/cancelSale")
+	public String cancelSale(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { return "pages/home.jsp"; }
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isStoreOwner() == false) { return "pages/home.jsp"; }
+		
+		Purchase inspectSale = (Purchase) session.getAttribute("inspectSale");
+		inspectSale.setCanceled(true);
+		oRepo.save(inspectSale);
+		
+		
+		return "pages/storeOwner/saleCancelled.jsp";
+	}
 	
 	
 	
