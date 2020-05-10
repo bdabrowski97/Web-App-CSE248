@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.model.Purchase;
 
+/**
+ * Service class for purchases
+ * @author bdabr
+ *
+ */
 @Service
 public class PurchaseService {
 	private PurchaseRepo repo;

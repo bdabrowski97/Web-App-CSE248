@@ -22,6 +22,11 @@ import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
+/**
+ * Controller that handles account registration
+ * @author bdabr
+ *
+ */
 @Controller
 public class RegisterController {
 	
@@ -38,7 +43,11 @@ public class RegisterController {
 	@Autowired
 	private ItemBoughtRepo ibRepo;
 	
-	
+	/**
+	 * Page that lets you choose which type of account you'd like to create
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/register") // choose which account type you want
 	public String register(HttpServletRequest request) {
 	/*	HttpSession session = request.getSession();
@@ -47,11 +56,21 @@ public class RegisterController {
 		return "pages/register/register.jsp";
 	}
 	
+	/**
+	 * Registtration form for user type accounts
+	 * @return
+	 */
 	@RequestMapping("/registerUser") // user create form
 	public String registerUser() {
 		return "pages/register/registerUser.jsp";
 	}
 	
+	/**
+	 * Processes data from user registration form and creates an entry in the data base
+	 * @param request Used to recieve data
+	 * @param model used to display data
+	 * @return
+	 */
 	@RequestMapping("/addUser") // function that creates the user
 	public String addUser(HttpServletRequest request, Model model) {
 		String enteredUsername = request.getParameter("username"); // gets the value from the text box in the jsp
@@ -103,11 +122,21 @@ public class RegisterController {
 		
 	}
 	
+	/**
+	 * Registration form for storeOwner type accounts
+	 * @return
+	 */
 	@RequestMapping("/registerOwner") // owner creation form
 	public String registerOwner() {
 		return "pages/register/registerOwner.jsp";
 	}
 	
+	/**
+	 * Processes data from storeOwner registration form and creates entry in database
+	 * @param request Used to recieve data
+	 * @param model used to display data
+	 * @return
+	 */
 	@RequestMapping("/addStoreOwner") // function that creates the owner
 	public String addStoreOwner(HttpServletRequest request, Model model) {
 		String enteredUsername = request.getParameter("username"); // gets the value from the text box in the jsp
@@ -149,11 +178,21 @@ public class RegisterController {
 		}
 	}
 	
+	/**
+	 * Admin registration form
+	 * @return
+	 */
 	@RequestMapping("/registerAdmin") // admin creation form
 	public String registerAdmin() {
 		return "pages/register/registerAdmin.jsp";
 	}
 	
+	/**
+	 * Processes data from admin registration form and creates entry in database
+	 * @param request Used to recieve data
+	 * @param model used to display data
+	 * @return
+	 */
 	@RequestMapping("/addAdmin") // function thats creates the admin
 	public String addAdmin(HttpServletRequest request, Model model) {
 		String enteredUsername = request.getParameter("username"); // gets the value from the text box in the jsp

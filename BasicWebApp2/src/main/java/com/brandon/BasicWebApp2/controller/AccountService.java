@@ -6,7 +6,11 @@ import org.springframework.stereotype.Service;
 
 import com.brandon.BasicWebApp2.dao.AccountRepo;
 import com.brandon.BasicWebApp2.model.Account;
-
+/**
+ * Service class for accounts. Helps manage repo
+ * @author bdabr
+ *
+ */
 @Service
 public class AccountService {
 	

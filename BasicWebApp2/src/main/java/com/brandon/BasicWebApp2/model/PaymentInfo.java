@@ -1,5 +1,10 @@
 package com.brandon.BasicWebApp2.model;
 
+/**
+ * Used to process payments with credit card
+ * @author bdabr
+ *
+ */
 public class PaymentInfo {
 	
 	private String mainNum;
@@ -8,12 +13,22 @@ public class PaymentInfo {
 	
 	public PaymentInfo() {} // default
 	
+	/**
+	 * Credit card info
+	 * @param num Credit card number
+	 * @param cvc credit card secruity code
+	 * @param expDate credit card experation date
+	 */
 	public PaymentInfo(String num, String cvc, String expDate) {
 		mainNum = num;
 		securityCode = cvc;
 		experationDate = expDate;
 	}
-
+	
+	/**
+	 * Checks if the credit info is legitament (number is 16 digits long, cvc is 3 digits long, expDate is 4 digits long
+	 * @return
+	 */
 	public boolean paymentValid() {
 		if (mainNum.length() != 16 || securityCode.length() != 3 || experationDate.length() != 4) {
 			return false;
@@ -51,7 +66,9 @@ public class PaymentInfo {
 	}
 	
 
-	
+	/**
+	 * Provides a string of the credit card info. Alters whats shown based on how if the data entered is correct or not. Adds ** for privacy concerns
+	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

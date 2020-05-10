@@ -21,7 +21,11 @@ import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
 import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
-
+/**
+ * Controller for admin specific functionality
+ * @author bdabr
+ *
+ */
 @Controller
 public class AdminController {
 	
@@ -37,7 +41,11 @@ public class AdminController {
 	@Autowired
 	private ItemBoughtRepo ibRepo;
 	
-	
+	/**
+	 * Displays menu for managing the website
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/managementMenu")
 	public String managementMenu(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -53,6 +61,11 @@ public class AdminController {
 		return "pages/admin/managementMenu.jsp";
 	}
 	
+	/**
+	 * Views all acccounts on website
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/viewAllAccounts")
 	public String viewAccounts(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -74,6 +87,11 @@ public class AdminController {
 		return "pages/admin/viewAllAccounts.jsp";
 	}
 	
+	/**
+	 * Views all stores on website
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/viewAllStores")
 	public String viewStores(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -95,6 +113,11 @@ public class AdminController {
 		return "pages/admin/viewAllStores.jsp";
 	}
 	
+	/**
+	 * Views all purchases made on website
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/viewAllPurchases")
 	public String viewAllPurchases(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -116,6 +139,12 @@ public class AdminController {
 		return "pages/admin/viewAllPurchases.jsp";
 	}
 	
+	/**
+	 * Lets admin take a closer look at a specific account's user information
+	 * @param request Used to recieve data
+	 * @param model Displays data on next page
+	 * @return
+	 */
 	@RequestMapping("/inspectAccount")
 	public String inspectAccount(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
@@ -147,7 +176,11 @@ public class AdminController {
 		return "pages/admin/inspectAccount.jsp";
 	}
 	
-	
+	/**
+	 * Lets admin view purchases made by the user they have inspected
+	 * @param request Used to recieve data
+	 * @return 
+	 */
 	@RequestMapping("/inspectAccountPurchases")
 	public String inspectAccountPurchases(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -181,6 +214,11 @@ public class AdminController {
 		return "pages/admin/inspectAccountPurchases.jsp";
 	}
 	
+	/**
+	 * View info on a specific purchase someone has made
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/adminViewPurchase")
 	public String adminViewPurchase(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -213,6 +251,11 @@ public class AdminController {
 		return "pages/admin/adminViewPurchase.jsp";
 	}
 	
+	/**
+	 * View more information on a purchase made
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/adminViewPurchase2")
 	public String adminViewPurchase2(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -247,6 +290,11 @@ public class AdminController {
 		return "pages/admin/adminViewPurchase2.jsp";
 	}
 	
+	/**
+	 * Ovverides a purchase made by an account and cancels it
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/adminCancelOrder")
 	public String adminCancelOrder(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -265,6 +313,11 @@ public class AdminController {
 		return "pages/admin/adminCancelOrder.jsp";
 	}
 	
+	/**
+	 * Ovverides a purchase made by an account and cancels it
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/adminCancelOrder2")
 	public String adminCancelOrder2(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -283,6 +336,11 @@ public class AdminController {
 		return "pages/admin/adminCancelOrder2.jsp";
 	}
 	
+	/**
+	 * View information about a specific store
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/inspectStore")
 	public String inspectStore(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -319,7 +377,11 @@ public class AdminController {
 		return "pages/admin/inspectStore.jsp";
 	}
 	
-	
+	/**
+	 * Ovverides a store and forces it to close
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/forceClose")
 	public String forceClose(HttpServletRequest request) {
 		HttpSession session = request.getSession();

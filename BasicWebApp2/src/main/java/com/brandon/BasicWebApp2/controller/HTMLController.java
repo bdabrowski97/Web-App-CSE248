@@ -20,7 +20,11 @@ import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
 import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
-
+/**
+ * Non-specific pages for the website (home/meme)
+ * @author bdabr
+ *
+ */
 @Controller
 public class HTMLController {
 	
@@ -38,7 +42,11 @@ public class HTMLController {
 	private ItemBoughtRepo ibRepo;
 	
 	
-	
+	/**
+	 * Loads the home page for the website (create account or login)
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/")
 	public String home(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -47,12 +55,20 @@ public class HTMLController {
 		return "pages/home.jsp";
 	}
 	
-
+	/**
+	 * Used to display an image
+	 * @return
+	 */
 	@RequestMapping("/meme") // dumb joke
 	public String meme() {
 		return "pages/meme.jsp";
 	}
 	
+	/**
+	 * Displays accountSettings page
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/accountSettings") // login page
 	public String accountSettingsPage(HttpServletRequest request) {	
 		HttpSession session = request.getSession();

@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Menu item in a store
+ * Copy of an item that was bought in a purchase. Cannot be deleted from database. Helps track order information
  * @author bdabr
  *
  */
@@ -23,10 +23,10 @@ public class ItemBought {
 	public ItemBought() {} // default
 	
 	/**
-	 * Version of item if no image is available
-	 * @param name Name of item
-	 * @param dec Description of item
-	 * @param price Price of item
+	 * Copy of an item bought in a purchase
+	 * @param name Item name
+	 * @param dec Item description
+	 * @param price Item price
 	 */
 	public ItemBought(String name, String dec, double price) {
 		this.name = name;

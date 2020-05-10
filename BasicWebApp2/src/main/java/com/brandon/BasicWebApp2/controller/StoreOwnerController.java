@@ -23,6 +23,11 @@ import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
+/**
+ * Controller that handles actions unique to the storeOwner account type
+ * @author bdabr
+ *
+ */
 @Controller
 public class StoreOwnerController {
 	
@@ -41,7 +46,11 @@ public class StoreOwnerController {
 	@Autowired
 	private ItemRepo iRepo;
 	
-	
+	/**
+	 * Displays all unqiue options for storeOwner accounts
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/storeSplash")
 	public String storeSplash(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -64,6 +73,11 @@ public class StoreOwnerController {
 		}
 	}
 	
+	/**
+	 * Upon first visiting the storeSplash page, the storeOwner class is prompted to create their own establishment
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/createStoreFunction")
 	public String createStoreFunction(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -95,6 +109,11 @@ public class StoreOwnerController {
 		return "pages/home.jsp";
 	}
 	
+	/**
+	 * Option menu to open or close the storeOwner's store
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/openOrClose")
 	public String openOrClose(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -112,6 +131,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/openOrClose.jsp";
 	}
 	
+	/**
+	 * Opens the store
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/openOrCloseOpen")
 	public String openOrCloseFunction(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -135,6 +159,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/storeSplash.jsp";
 	}
 	
+	/**
+	 * Closes the store
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/openOrCloseClose")
 	public String openOrCloseFunction2(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -159,6 +188,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/storeSplash.jsp";
 	}
 	
+	/**
+	 * Form to change the store's information (name and tag)
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/changeStoreInfo")
 	public String changeStoreInfo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -176,6 +210,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/changeStoreInfo.jsp";
 	}
 	
+	/**
+	 * Processes form data and updates store's entry in the database
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/changeStoreInfoFunction")
 	public String changeStoreInfoFunction(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -210,6 +249,11 @@ public class StoreOwnerController {
 		
 	}
 	
+	/**
+	 * Allows storeOwner to delete or add new items to their store
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/manageItems")
 	public String manageItems(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -243,6 +287,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/manageItems.jsp";
 	}
 	
+	/**
+	 * Item creation form
+	 * @param request Used to recieve data
+	 * @return 
+	 */
 	@RequestMapping("/createItem")
 	public String createItem(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -261,6 +310,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/createItem.jsp";
 	}
 	
+	/**
+	 * Processes data from item creation form and creates an item in the database
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/createItemFunction")
 	public String createItemFunction(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -319,7 +373,11 @@ public class StoreOwnerController {
 	}
 	
 	
-	
+	/**
+	 * Takes data from form on itemCreate page and deletes its data from the database
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/deleteThisItem")
 	public String deleteThisitem(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -350,7 +408,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/deletedItemInvalid.jsp";
 	}
 	
-	
+	/**
+	 * View all purchases made at this store 
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/viewSales")
 	public String viewSales(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -381,7 +443,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/viewSales.jsp";
 	}
 	
-	
+	/**
+	 * View the specific details of an individual sale made at this store
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/viewSaleDetails")
 	public String viewSaleDetails(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -417,6 +483,11 @@ public class StoreOwnerController {
 		return "pages/storeOwner/viewSaleDetails.jsp";
 	}
 	
+	/**
+	 * Used to cancel a purchase made by a user at your store
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/cancelSale")
 	public String cancelSale(HttpServletRequest request) {
 		HttpSession session = request.getSession();

@@ -22,6 +22,11 @@ import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
 
+/**
+ * Controller for actions unqiue to the user account
+ * @author bdabr
+ *
+ */
 @Controller
 public class UserController {
 	
@@ -41,7 +46,11 @@ public class UserController {
 	private ItemRepo iRepo;
 	
 	
-	
+	/**
+	 * Splash screen for unique user options
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/shopSplash")
 	public String shopSplash(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -57,7 +66,11 @@ public class UserController {
 		return "pages/user/shopSplash.jsp";
 	}
 	
-	
+	/**
+	 * Allows user to look at all open stores available to shop at
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/browseStores")
 	public String browseStores(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -90,6 +103,11 @@ public class UserController {
 		return "pages/user/browseStores.jsp";
 	}
 	
+	/**
+	 * Browse items from a specific open store
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/browseItems")
 	public String browseItems(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -130,6 +148,11 @@ public class UserController {
 		return "pages/user/browseItems.jsp";
 	}
 	
+	/**
+	 * adds item from store to the cart
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/addToCart")
 	public String addToCart(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -162,7 +185,11 @@ public class UserController {
 		return "pages/user/browseItems.jsp";
 	}
 	
-	
+	/**
+	 * View the user's current carted items, subtotal, and total money owed 
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/viewCart")
 	public String viewCart(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -179,7 +206,11 @@ public class UserController {
 		return "pages/user/viewCart.jsp";
 	}
 	
-	
+	/**
+	 * Processes purchase and adds it and all items bought to the database (the items bought get new entries created in the itemBought table, with an ID that connects them to the purchase table
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("checkOut")
 	public String checkout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -261,7 +292,11 @@ public class UserController {
 		return "pages/user/checkOut.jsp";
 	}
 	
-	
+	/**
+	 * View all purchases made by this user
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("viewMyPurchases")
 	public String viewMyPurchases(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -290,6 +325,11 @@ public class UserController {
 		return "pages/user/viewMyPurchases.jsp";
 	}
 	
+	/**
+	 * View the more specific details of a purchase made (items bought, store, subtotal, etc)
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("viewPurchaseDetails")
 	public String viewPurchaseDetails(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -335,7 +375,11 @@ public class UserController {
 		return "pages/user/viewMyPurchases.jsp";
 	}
 	
-	
+	/**
+	 * Allows user to cancel a purchase they made
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/cancelOrder")
 	public String cancelOrder(HttpServletRequest request) {
 		HttpSession session = request.getSession();

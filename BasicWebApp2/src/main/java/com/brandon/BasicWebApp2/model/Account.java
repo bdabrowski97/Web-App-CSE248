@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * This is the basic skeleton of the three account types for this program.
+ * Account class is used by all account types (user, storeOwner, admin) and functionality is dictated by boolean values isAdmin and isStoreOwner
  * @author bdabr
  *
  */

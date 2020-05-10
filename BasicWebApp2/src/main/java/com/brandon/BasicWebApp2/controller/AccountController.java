@@ -19,7 +19,11 @@ import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
 import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
-
+/**
+ * Controller that handles many shared actions between all three account types
+ * @author bdabr
+ *
+ */
 @Controller
 public class AccountController {
 	
@@ -37,7 +41,11 @@ public class AccountController {
 	
 	
 	
-	
+	/**
+	 * Handles homepages for each account type.
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/homePage")
 	public String userHomePage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -59,6 +67,11 @@ public class AccountController {
 		return "pages/user/userHomePage.jsp";
 	}
 	
+	/**
+	 * Allows each account type to change/view various information about themselves.
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/accountSettingsPage")
 	public String accountSettings(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -81,6 +94,11 @@ public class AccountController {
 		return "pages/user/userAccountSettings.jsp";
 	}
 	
+	/**
+	 * Loads the form to change infortmation/password about your account
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/accountInfoSettings")
 	public String userInfoSettings(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -102,7 +120,11 @@ public class AccountController {
 		return "pages/user/userInfoSettings.jsp";
 	}
 	
-	
+	/**
+	 * Uses data recieved in form to alter login/user infortmation (excluding the username used to log in)
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/accountInfoSettingsFunction")
 	public String changeUserInfo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -159,6 +181,12 @@ public class AccountController {
 		return "pages/user/userAccountSettings.jsp";
 	}
 	
+	/**
+	 * View account information
+	 * @param request Used to recieve data
+	 * @param model Sends data to next page
+	 * @return
+	 */
 	@RequestMapping("/viewMyAccountInfo")
 	public String viewMyAccountInfo(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
@@ -181,7 +209,11 @@ public class AccountController {
 		return "pages/user/viewMyAccountInfo.jsp";
 		
 	}
-	
+	/**
+	 * Displays form for changing credit card information
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("/changePaymentInfo")
 	public String changePaymentInfo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -199,6 +231,11 @@ public class AccountController {
 		return "pages/user/changePaymentInfo.jsp";
 	}
 	
+	/**
+	 * Takes data from the form and alters payment informartion (or deletes it, if all fields equal 0)
+	 * @param request Used to recieve data
+	 * @return
+	 */
 	@RequestMapping("changePaymentInfoFunction")
 	public String changePaymentInfo2(HttpServletRequest request) {
 		HttpSession session = request.getSession();

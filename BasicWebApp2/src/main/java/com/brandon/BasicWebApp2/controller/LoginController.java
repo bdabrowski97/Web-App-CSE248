@@ -19,7 +19,11 @@ import com.brandon.BasicWebApp2.dao.ItemBoughtRepo;
 import com.brandon.BasicWebApp2.dao.PurchaseRepo;
 import com.brandon.BasicWebApp2.dao.StoreRepo;
 import com.brandon.BasicWebApp2.model.*;
-
+/**
+ * Handles logging in  users to website
+ * @author bdabr
+ *
+ */
 @Controller
 public class LoginController {
 	
@@ -35,12 +39,21 @@ public class LoginController {
 	@Autowired
 	private ItemBoughtRepo ibRepo;
 	
-	
+	/**
+	 * Displays login form
+	 * @return
+	 */
 	@RequestMapping("/login") // login page
 	public String loginPage() {	
 		return "pages/login/login.jsp";
 	}
 	
+	/**
+	 * Takes data from form and logs in user correctly based on account type
+	 * @param request Used to recieve data
+	 * @param model Displays data on the next page (this has been retired in favor of session attributes
+	 * @return
+	 */
 	@RequestMapping("/loginAccount") // form for logging in
 	public String loginAccount(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();

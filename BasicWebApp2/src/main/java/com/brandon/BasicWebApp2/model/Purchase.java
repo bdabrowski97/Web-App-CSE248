@@ -5,6 +5,11 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * Purchase made by a user type account
+ * @author bdabr
+ *
+ */
 @Entity
 public class Purchase {
 	
@@ -21,6 +26,13 @@ public class Purchase {
 	
 	public Purchase() {this.date = new Date();} // default
 	
+	/**
+	 * Purchase information
+	 * @param orderID Used to keep track of all purchases made in database
+	 * @param storeID used to link the purchase to the store data table
+	 * @param userID used to link the purchase to a user type account
+	 * @param total total amount of money paid
+	 */
 	public Purchase(int orderID, int storeID, String userID, double total) {
 		this.purchaseID = orderID;
 		this.storeID = storeID;

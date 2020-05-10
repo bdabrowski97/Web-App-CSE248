@@ -2,19 +2,29 @@ package com.brandon.BasicWebApp2.model;
 
 import java.util.ArrayList;
 
+/**
+ * Used to keep track of items a user wants to buy. Is temporary and not stored in the database
+ * @author bdabr
+ *
+ */
 public class ShoppingCart {
 	
 	private double price;
 	private double subtotal;
 	private ArrayList<Item> items;
 	
-	
+	/**
+	 * Constructor for shopping cart
+	 */
 	public ShoppingCart() {
 		this.price = 0;
 		this.subtotal = 0;
 		items = new ArrayList<>();
 	}
 	
+	/**
+	 * Calculates price with tax included
+	 */
 	public void calculatePrice() {
 		double total = 0;
 		for (int i = 0; i < items.size(); i++) {
@@ -26,6 +36,9 @@ public class ShoppingCart {
 		setPrice(total);
 	}
 	
+	/**
+	 * Calculates price without tax
+	 */
 	public void calculateSubtotal() {
 		double sub = 0;
 		for (int i = 0; i < items.size(); i++) {
@@ -35,10 +48,17 @@ public class ShoppingCart {
 		setSubtotal(sub);
 	}
 	
+	/**
+	 * Empties the shopping cart
+	 */
 	public void clearItems() {
 		items.clear();
 	}
 	
+	/**
+	 * Adds item to the shopping cart
+	 * @param item Item being added
+	 */
 	public void addItem(Item item) {
 		items.add(item);
 	}
