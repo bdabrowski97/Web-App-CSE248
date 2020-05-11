@@ -400,5 +400,45 @@ public class UserController {
 		return "pages/user/purchaseCancelled.jsp";
 	}
 	
+	/**
+	 * Allows user to narrow down stores to what they like through tags or name
+	 * @param request data being recieved
+	 * @return
+	 */
+	@RequestMapping("/searchForStores")
+	public String searchForStores(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("storedUsername") == null) { // verfying user account
+			return "pages/home.jsp";
+		}
+		String username = (String) session.getAttribute("storedUsername");
+		Account acc = aRepo.findById(username).get();
+		if (acc.isAdmin() == true || acc.isStoreOwner() == true) {
+			return "pages/home.jsp";
+		}
+		
+		Iterable<Store> iterable = sRepo.findAll();
+		ArrayList<Store> collection = new ArrayList<>();
+		iterable.forEach(collection::add);
+		
+		String search = request.getParameter("search");
+		
+		ArrayList<Store> allStores = new ArrayList<>();
+		for (int i = 0; i < collection.size(); i++) {
+			if (collection.get(i).isOpen() == true) {
+				if (collection.get(i).getName().equalsIgnoreCase(search) || collection.get(i).getTags().equalsIgnoreCase(search)) {
+					allStores.add(collection.get(i));
+				}
+			}
+		}
+		
+		session.setAttribute("allStores", allStores);
+		
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+		cart.clearItems();
+		session.setAttribute("cart", cart);
+		
+		return "pages/user/browseStores.jsp";
+	}
 	
 }

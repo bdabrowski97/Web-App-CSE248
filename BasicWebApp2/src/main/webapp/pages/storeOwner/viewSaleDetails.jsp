@@ -52,7 +52,7 @@
 	
 	<button onclick=window.location="http://localhost:8080/cancelSale">CANCEL ORDER</button>
 	<br><br><br>
-	<button onclick=window.location="http://localhost:8080/viewMyPurchases">Go Back</button>
+	<button onclick=window.location="http://localhost:8080/viewSales">Go Back</button>
 	
 	</p>
 	

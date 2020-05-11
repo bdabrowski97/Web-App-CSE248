@@ -307,6 +307,7 @@ public class AdminController {
 		if (acc.isAdmin() == false) { return "pages/home.jsp"; }
 		
 		Purchase purchase = (Purchase) session.getAttribute("viewThisPurchase");
+		
 		purchase.setCanceled(true);
 		oRepo.save(purchase);
 		

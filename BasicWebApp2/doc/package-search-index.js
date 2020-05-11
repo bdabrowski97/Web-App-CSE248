@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.brandon.BasicWebApp2.controller"},{"l":"com.brandon.BasicWebApp2.dao"},{"l":"com.brandon.BasicWebApp2.model"}]

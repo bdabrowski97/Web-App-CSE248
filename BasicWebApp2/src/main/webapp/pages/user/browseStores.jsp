@@ -21,6 +21,16 @@
 	<br>
 	<br>
 	
+	<form action="searchForStores">
+		<input type="text" name="search" placeholder="SEARCH STORE NAME OR TAG">
+		<input type="submit">
+	</form>
+	
+	<br>
+	<br>
+	<br>
+	
+	
 	<form action="browseItems">
 		<input type="text" name="shopID"	placeholder="SHOP ID">
 		<input type="submit">
