@@ -36,6 +36,7 @@ _______________________
 ---in particular, having the menus have more structure. Currently buttons and tables can be inconssistant wether they're aligned with the center of the screen or the left side of the screen. <br>
 ---Working buttons as opposed to using javascript forms to call java methods to handle all logic (with close/open store buttons being the excpetions)<br>
 ---Finding a way to reduce the amount of screens between various functions would also help make the website a more tight-knit experience. <br>
+---Personally, I'd also really like to find a way to have really slick animations n stuff, but what I have in mind would require 3d modeling knowledge (or ripping existing models from sources), rigging, and somehow making it run on a website. Not a priorty, though some more personality would be nice. <br>
 <br>
 -A search functionailty with room for error. More specifically, one that can parse segments of strings from entries in the database so you don't need to know exact names of stores. <br>
 -Images for menu items<br>
@@ -69,5 +70,6 @@ Many tutorials spun me in circles with things that wouldn't work well with each 
 This is evident by the commit history, with four folders being dedicated to tutorials (they were removed from the final commit in this repository).
 The folder the project was finished in was also a tutorial folder previously, hence the weird name it has. Tried changing it but nothing seemed to work for whatever reason. <br>
 
+Overall the project was hard and I wasn't a fan. It is what it is.
 
 
