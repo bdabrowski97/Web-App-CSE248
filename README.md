@@ -70,6 +70,5 @@ Many tutorials spun me in circles with things that wouldn't work well with each 
 This is evident by the commit history, with four folders being dedicated to tutorials (they were removed from the final commit in this repository).
 The folder the project was finished in was also a tutorial folder previously, hence the weird name it has. Tried changing it but nothing seemed to work for whatever reason. <br>
 
-Overall the project was hard and I wasn't a fan. It is what it is.
 
 
